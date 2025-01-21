@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body{
+  width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.captionText{
+  font-family: "Indie Flower", cursive !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 85.7% 97.3%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 72.2% 50.6%;
+    --radius: 1rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    .active{
+      /* text-decoration: underline;
+      text-underline-position: under; */
+      color: black !important;
+      font-weight: 600;
+    }
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 0 85.7% 97.3%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 72.2% 50.6%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    .active{
+      /* text-decoration: underline;
+      text-underline-position: under; */
+      color: rgb(255, 255, 255) !important;
+      font-weight: 600;
+    }
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.aspect-square{
+  aspect-ratio: 1 / 1 !important;
+}
+
+.aspect-video{
+  aspect-ratio: 16 / 9 !important;
+}
+
+.aspect-portrait{
+  aspect-ratio: 9 / 16 !important;
+}
+
+.aspect-ratio-selected{
+  background-color: rgb(249, 249, 249);
+  color: black;
+}
+
+.p-1{
+  padding: 0.25rem 0.25rem 2rem 0.25rem !important;
+}
+
+.p-2{
+  padding: 0.5rem 0.5rem 2rem 0.5rem !important;
+}
+
+.p-3{
+  padding: 0.75rem 0.75rem 2rem 0.75rem !important;
+}
+
+.p-4{
+  padding: 1rem 1rem 2rem 1rem !important;
+}
+
+.p-5{
+  padding: 1.25rem 1.25rem  2rem  1.25rem !important;
+}
+
+.scale-1{
+  scale: 1;
+}
+
+.scale-2{
+  scale: 1.2;
+}
+
+.scale-3{
+  scale: 1.3;
+}
+
+.scale-4{
+  scale: 1.4;
+}
+
+.scale-5{
+  scale: 1.5;
+}
+
+.scale-6{
+  scale: 1.6;
+}
+
+.scale-7{
+  scale: 1.7;
+}
+
+.scale-8{
+  scale: 1.8;
+}
+
+.scale-9{
+  scale: 1.9;
+}
+
+.scale-10{
+  scale: 2;
+}
+
+.scale-11{
+  scale: 2.1;
+}
+
+.scale-12{
+  scale: 2.2;
+}
+
+.scale-13{
+  scale: 2.3;
+}
+
+.scale-14{
+  scale: 2.4;
+}
+
+.scale-15{
+  scale: 2.5;
+}
+
+.scale-16{
+  scale: 2.6;
+}
+
+.scale-17{
+  scale: 2.7;
+}
+
+.scale-18{
+  scale: 2.8;
+}
+
+.scale-19{
+  scale: 2.9;
+}
+
+.scale-20{
+  scale: 3;
+}
+
+.scale-21{
+  scale: 3.1;
+}
+
+.scale-22{
+  scale: 3.2;
+}
+
+.scale-23{
+  scale: 3.3;
+}
+
+.scale-24{
+  scale: 3.4;
+}
+
+.scale-25{
+  scale: 3.5;
+}
+
+.scale-26{
+  scale: 3.6;
+}
+
+.scale-27{
+  scale: 3.7;
+}
+
+.scale-28{
+  scale: 3.8;
+}
+
+.scale-29{
+  scale: 3.9;
+}
+
+.scale-30{
+  scale: 4;
+}
+
+
+.cird:not(:hover) .img {
+  transition: translate 0.2s;
+}
+
+/* .cird:hover .img {
+  translate:
+    calc((var(--ratio-x) - 0.5) * 10%)
+    calc((var(--ratio-y) - 0.5) * 10%);
+} */
+
+.cird {
+  --ratio-x: 0;
+  --ratio-y: 0;
+  overflow: hidden;
+  /* aspect-ratio: 3 / 4; */
+  /* width: 50vmin; */
+  /* min-width: 280px; */
+  /* border-radius: 8px; */
+  transform-style: preserve-3d;
+  touch-action: none;
+  transition: transform 0.2s;
+}
+
+.cird:hover {
+  transition: transform 0s;
+  transform:
+    rotateX(calc((var(--ratio-y) - 0.5) * 30deg))
+    rotateY(calc((var(--ratio-x) - 0.5) * -20deg));
+}
+
+.cird:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%), hsl(0 0% 100% / 0.5), transparent 50%);
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  z-index: 2;
+}
+
+.cird:before {
+  content: "";
+  background:
+   url(https://assets.codepen.io/605876/code-icon-bg.svg) 0 0 / 18% 18%,
+   linear-gradient(115deg,
+     transparent 20%,
+     var(--green-8) 30%,
+     transparent 48% 52%,
+     var(--indigo-8) 70%,
+     transparent
+   )
+   80% 80% / 300% 300%;
+  filter: brightness(2) contrast(1);
+  background-blend-mode: overlay;
+  mix-blend-mode: color-dodge;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+
+.cird:hover:before {
+  background-position:
+    calc(var(--ratio-x) * 10%) calc(var(--ratio-y) * 10%),
+    calc(80% + (var(--ratio-x) * -50%)) calc(80% + (var(--ratio-y) * -50%));
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+} 
+
+/* quill */
+blockquote {
+  margin: 1.5em 10px;
+  padding: .2em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+blockquote span {
+  background: #f9f9f9;
+}
+
+.htmlrender-detail ol{
+  padding: revert !important;
+}
+
+.htmlrender-detail ol li{
+  list-style: auto;
+  list-style-position: outside;
+  padding: revert !important;
+}
+
+.htmlrender-detail ul{
+  padding: revert !important;
+}
+
+.htmlrender-detail ul li{
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.ql-toolbar.ql-snow .ql-formats{
+  margin-right: 0px !important;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(#ffffff33 2px, transparent 0);
+  background-size: 10px 10px;
+  background-position: -19px -19px;
+  border-radius: 100%;
+}
+
+.factshadow{
+  box-shadow: 0px -2px 34.6px 0px #FFFFFF !important;
+}
+
+.rotate-1{
+  rotate: -2deg;
+}
+
+.rotate-2{
+  rotate: -4deg;
+}
+
+.rotate-3{
+  rotate: -6deg;
+}
+
+.rotate-4{
+  rotate: -8deg;
+}
+
+.rotate-5{
+  rotate: -10deg;
+}
+
+
+.dark .ql-editor p{
+  color: black !important;
+}
+
+select.typeface {
+	appearance: none !important;
+}
