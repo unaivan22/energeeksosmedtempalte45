@@ -181,8 +181,8 @@ function PostStyleFifteen() {
         <Link to='/' className='absolute'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[8vh] -translate-x-[10vw]`}>
-          <div className={`w-[1000px] h-[1000px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center renderthis bg-[#E74C3C]` } ref={elementRef}>
+        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center renderthis bg-[#E74C3C]` } ref={elementRef}>
             {previewURL && (
               <div className='cursor-grab top-0' id='StepName'>
                 <motion.div className="" ref={constraintsRef} />
@@ -192,24 +192,24 @@ function PostStyleFifteen() {
             
 
             {isCheckedOverlay && (
-              <div className='absolute top-8 left-1 z-50'>
+              <div className='absolute top-10 left-20 z-50'>
                 <LogoWhite />
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute bottom-32 w-[896.1px]'>
+              <div className='z-50 pb-6 absolute bottom-[200px] w-[1040px]'>
                 <div className='flex flex-col text-left gap-5 htmlrender-detail'>
-                  <h1 className='text-white text-[3rem] w-full font-bold leading-none'  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                  <p className='text-white w-full text-[1.5rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                  <h1 className='text-white text-[3.3rem] w-full font-bold leading-none'  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className='text-white w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute bottom-8 w-[896.1px] z-[999]'>
+              <div className='z-[999] pb-6 absolute bottom-10 w-[1040px]'>
                 <div className='flex flex-col text-center gap-2 htmlrender-detail'>
-                  <p className='text-white w-full text-[1.4rem] font-light text-center'> {isCheckedCopyright ? ( <div className='flex items-center gap-2 justify-start'><Camera className='w-8 h-8' /> <HtmlRenderer html={inputEventDescCopyright} /></div> ) : null}</p>
+                  <p className='text-white w-full text-[2rem] font-light text-center'> {isCheckedCopyright ? ( <div className='flex items-center gap-2 justify-start'><Camera className='w-8 h-8' /> <HtmlRenderer html={inputEventDescCopyright} /></div> ) : null}</p>
                 </div>
               </div>
             )}

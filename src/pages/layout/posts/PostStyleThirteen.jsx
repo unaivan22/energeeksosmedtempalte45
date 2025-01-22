@@ -23,6 +23,7 @@ import { Walktour } from 'walktour'
 import LogoRed from '../utils/LogoRed';
 import TypefaceTitle from '../utils/TypefaceTitle';
 import UploadAnimation from '../utils/UploadAnimation';
+import LogoBlack from '../utils/LogoBlack';
 
 function PostStyleThirteen() {
   const [image, setImage] = useState(null);
@@ -179,8 +180,8 @@ function PostStyleThirteen() {
         <Link to='/' className='absolute'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[8vh] -translate-x-[10vw]`}>
-          <div className={`w-[1000px] h-[1000px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
+        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
             {previewURL && (
               <div className='cursor-grab top-0' id='StepName'>
                 <motion.div className="" ref={constraintsRef} />
@@ -190,30 +191,30 @@ function PostStyleThirteen() {
             
 
             {isCheckedOverlay && (
-              <div className='absolute top-8 left-1 z-50'>
-                <LogoRed />
+              <div className='absolute top-10 left-20 z-50'>
+                <LogoBlack />
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 w-[500px] h-[1000px] grid place-items-center -translate-x-[150px]'>
+              <div className='z-50 pb-6 w-[600px] h-[1500px] grid place-items-center -translate-x-[150px]'>
                 <div className='flex flex-col text-left gap-5 htmlrender-detail pt-44'>
-                  <h1 className='text-black text-[5rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                  <p className='text-black w-full text-[1.5rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                  <h1 className='text-black text-[5.3rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className='text-black w-full text-[1.8em]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='absolute top-0 left-0 h-[1000px] w-full'>
+              <div className='absolute top-0 left-0 h-[1500px] w-full'>
                 <div className='bg-gradient-to-b from-[#fff] to-[#fff] opacity-80 h-full'></div>
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute bottom-8 w-[896.1px] z-[999]'>
+              <div className='z-[999] pb-6 absolute bottom-10 w-[1040px]'>
                 <div className='flex flex-col text-center gap-2 htmlrender-detail'>
-                  <p className='text-black w-full text-[1.4rem] font-light text-center'> {isCheckedCopyright ? ( <div className='flex items-center gap-2 justify-start'><Camera className='w-8 h-8' /> <HtmlRenderer html={inputEventDescCopyright} /></div> ) : null}</p>
+                  <p className='text-black w-full text-[2rem] font-light text-center'> {isCheckedCopyright ? ( <div className='flex items-center gap-2 justify-start'><Camera className='w-8 h-8' /> <HtmlRenderer html={inputEventDescCopyright} /></div> ) : null}</p>
                 </div>
               </div>
             )}

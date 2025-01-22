@@ -59,7 +59,7 @@ export default function Welcome() {
                 Post Template
               </p>
               <p className="text-light opacity-50 text-sm mb-2">
-                Hasil export menggunakan ukuran 1:1
+                Hasil export menggunakan ukuran 4:5
               </p>
               <div
                 className="grid grid-cols-2 lg:grid-cols-3 mt-4 gap-[1px]"
@@ -131,7 +131,7 @@ export default function Welcome() {
                 Fact Template
               </p>
               <p className="text-light opacity-50 text-sm mb-2">
-                Hasil export menggunakan ukuran 1:1
+                Hasil export menggunakan ukuran 4:5
               </p>
               <div
                 className="grid grid-cols-2 lg:grid-cols-3 mt-4 gap-[1px]"
@@ -163,7 +163,7 @@ export default function Welcome() {
                 Joke Template
               </p>
               <p className="text-light opacity-50 text-sm mb-2">
-                Hasil export menggunakan ukuran 1:1
+                Hasil export menggunakan ukuran 4:5
               </p>
               <div
                 className="grid grid-cols-2 gap-1 lg:grid-cols-3 mt-4"
@@ -195,7 +195,7 @@ export default function Welcome() {
                 Quote Template
               </p>
               <p className="text-light opacity-50 text-sm mb-2">
-                Hasil export menggunakan ukuran 1:1
+                Hasil export menggunakan ukuran 4:5
               </p>
               <div
                 className="grid grid-cols-2 gap-1 lg:grid-cols-3 mt-4"

@@ -4,7 +4,7 @@ export default function LogoWhite() {
   return (
     <svg
       width="282"
-      height="59.24"
+      height="78"
       viewBox="0 0 310 84"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
