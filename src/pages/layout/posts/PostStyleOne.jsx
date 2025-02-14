@@ -254,6 +254,9 @@ function PostStyleOne() {
               <img className='w-full' src='/post/styleone/styleonebottom.svg' />
             </div> */}
             
+          
+            {/* <div className='absolute bg-lime-500 w-[1125px] h-[1200px] opacity-40 border-[3px] border-black'></div> */}
+
           </div>
         </div>
         {previewURL && (
