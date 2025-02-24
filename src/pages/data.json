@@ -159,5 +159,13 @@
             "type" : "Fact",
             "src" : "/quote/1.webp"
         }
+    ],"CertificateProjects": [
+        {
+            "id" : "0",
+            "link" : "certificate/style-one/",
+            "projectname" : "Style One",
+            "type" : "Fact",
+            "src" : "/certificate/1.webp"
+        }
     ]
 }

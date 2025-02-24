@@ -30,6 +30,7 @@ import PostStyleFourteen from './layout/posts/PostStyleFourteen';
 import PostStyleFifteen from './layout/posts/PostStyleFifteen';
 import PostStyleSixteen from './layout/posts/PostStyleSixteen';
 import PostStyleSeventeen from './layout/posts/PostStyleSeventeen';
+import CertificateOne from './layout/certificates/CertificateOne';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -83,6 +84,8 @@ export default function RouterPage() {
               <Route path='/joke/style-two' element={<JokeStyleTwo/>} />
 
               <Route path='/quote/style-one' element={<QuoteStyleOne/>} />
+
+              <Route path='/certificate/style-one' element={<CertificateOne/>} />
 
               <Route path='*' element={<NotFound/>} />
           </Routes>
