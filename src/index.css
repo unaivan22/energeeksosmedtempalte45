@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allison&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body{
   width: 100vw !important;
@@ -33,6 +34,9 @@ html {
   font-family: "Allison", serif;
 }
 
+.almendra {
+  font-family: "Almendra", serif;
+}
 
 @tailwind base;
 @tailwind components;
