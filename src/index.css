@@ -455,3 +455,7 @@ select.typeface {
   background-size: 10px 10px;
   background-repeat: repeat;
 }
+
+strong{
+  font-weight: bold !important;
+}
