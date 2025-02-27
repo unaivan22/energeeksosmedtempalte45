@@ -32,6 +32,7 @@ import PostStyleSixteen from './layout/posts/PostStyleSixteen';
 import PostStyleSeventeen from './layout/posts/PostStyleSeventeen';
 import CertificateOne from './layout/certificates/CertificateOne';
 import CertificateTwo from './layout/certificates/CertificateTwo';
+import CertificateThree from './layout/certificates/CertificateThree';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -88,6 +89,7 @@ export default function RouterPage() {
 
               <Route path='/certificate/style-one' element={<CertificateOne/>} />
               <Route path='/certificate/style-two' element={<CertificateTwo/>} />
+              <Route path='/certificate/style-three' element={<CertificateThree/>} />
 
               <Route path='*' element={<NotFound/>} />
           </Routes>

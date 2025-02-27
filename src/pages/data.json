@@ -172,6 +172,12 @@
             "projectname" : "Style One",
             "type" : "Fact",
             "src" : "/certificate/2.webp"
+        },{
+            "id" : "2",
+            "link" : "certificate/style-three/",
+            "projectname" : "Style Three",
+            "type" : "Fact",
+            "src" : "/certificate/3.webp"
         }
     ]
 }
