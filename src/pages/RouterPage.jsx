@@ -33,68 +33,75 @@ import PostStyleSeventeen from './layout/posts/PostStyleSeventeen';
 import CertificateOne from './layout/certificates/CertificateOne';
 import CertificateTwo from './layout/certificates/CertificateTwo';
 import CertificateThree from './layout/certificates/CertificateThree';
+import TwibbobOne from './layout/twibbon/TwibbonOne';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Change the breakpoint as per your needs
+      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
     };
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  
   return (
-      <Router>
-        {isMobile ? <Forbidden /> :  <Routes>
-              <Route path='/' element={<Home/>} />
-              <Route path='/doc' element={<Documentation/>} />
+    <Router>
+      <Routes>
+        {/* Allow /twibbon/style-one route for all screen sizes */}
+        <Route path='/twibbon/style-one' element={<TwibbobOne />} />
 
-              <Route path='/post/style-one' element={<PostStyleOne/>} />
-              <Route path='/post/style-two' element={<PostStyleTwo/>} />
-              <Route path='/post/style-three' element={<PostStyleThree/>} />
-              <Route path='/post/style-four' element={<PostStyleFour/>} />
-              <Route path='/post/style-five' element={<PostStyleFive/>} />
-              <Route path='/post/style-six' element={<PostStyleSix/>} />
-              <Route path='/post/style-seven' element={<PostStyleSeven/>} />
-              <Route path='/post/style-eight' element={<PostStyleEight/>} />
-              <Route path='/post/style-nine' element={<PostStyleNine/>} />
-              <Route path='/post/style-ten' element={<PostStyleTen/>} />
-              <Route path='/post/style-eleven' element={<PostStyleEleven/>} />
-              <Route path='/post/style-twelve' element={<PostStyleTwelve/>} />
-              <Route path='/post/style-thirteen' element={<PostStyleThirteen/>} />
-              <Route path='/post/style-fourteen' element={<PostStyleFourteen/>} />
-              <Route path='/post/style-fifteen' element={<PostStyleFifteen/>} />
-              <Route path='/post/style-sixteen' element={<PostStyleSixteen/>} />
-              <Route path='/post/style-seventeen' element={<PostStyleSeventeen/>} />
+        {/* Show Forbidden for all other routes on mobile */}
+        {isMobile ? (
+          <Route path='*' element={<Forbidden />} />
+        ) : (
+          <>
+            <Route path='/' element={<Home />} />
+            <Route path='/doc' element={<Documentation />} />
 
-              <Route path='/reel/style-one' element={<ReelStyleOne/>} />
+            <Route path='/post/style-one' element={<PostStyleOne />} />
+            <Route path='/post/style-two' element={<PostStyleTwo />} />
+            <Route path='/post/style-three' element={<PostStyleThree />} />
+            <Route path='/post/style-four' element={<PostStyleFour />} />
+            <Route path='/post/style-five' element={<PostStyleFive />} />
+            <Route path='/post/style-six' element={<PostStyleSix />} />
+            <Route path='/post/style-seven' element={<PostStyleSeven />} />
+            <Route path='/post/style-eight' element={<PostStyleEight />} />
+            <Route path='/post/style-nine' element={<PostStyleNine />} />
+            <Route path='/post/style-ten' element={<PostStyleTen />} />
+            <Route path='/post/style-eleven' element={<PostStyleEleven />} />
+            <Route path='/post/style-twelve' element={<PostStyleTwelve />} />
+            <Route path='/post/style-thirteen' element={<PostStyleThirteen />} />
+            <Route path='/post/style-fourteen' element={<PostStyleFourteen />} />
+            <Route path='/post/style-fifteen' element={<PostStyleFifteen />} />
+            <Route path='/post/style-sixteen' element={<PostStyleSixteen />} />
+            <Route path='/post/style-seventeen' element={<PostStyleSeventeen />} />
 
-              <Route path='/fact/style-one' element={<FactStyleOne/>} />
-              <Route path='/fact/style-two' element={<FactStyleTwo/>} />
-              <Route path='/fact/style-three' element={<FactStyleThree/>} />
-              <Route path='/fact/style-four' element={<FactStyleFour/>} />
+            <Route path='/reel/style-one' element={<ReelStyleOne />} />
 
-              <Route path='/joke/style-one' element={<JokeStyleOne/>} />
-              <Route path='/joke/style-two' element={<JokeStyleTwo/>} />
+            <Route path='/fact/style-one' element={<FactStyleOne />} />
+            <Route path='/fact/style-two' element={<FactStyleTwo />} />
+            <Route path='/fact/style-three' element={<FactStyleThree />} />
+            <Route path='/fact/style-four' element={<FactStyleFour />} />
 
-              <Route path='/quote/style-one' element={<QuoteStyleOne/>} />
+            <Route path='/joke/style-one' element={<JokeStyleOne />} />
+            <Route path='/joke/style-two' element={<JokeStyleTwo />} />
 
-              <Route path='/certificate/style-one' element={<CertificateOne/>} />
-              <Route path='/certificate/style-two' element={<CertificateTwo/>} />
-              <Route path='/certificate/style-three' element={<CertificateThree/>} />
+            <Route path='/quote/style-one' element={<QuoteStyleOne />} />
 
-              <Route path='*' element={<NotFound/>} />
-          </Routes>
-        }
-        
-      </Router>
-  )
+            <Route path='/certificate/style-one' element={<CertificateOne />} />
+            <Route path='/certificate/style-two' element={<CertificateTwo />} />
+            <Route path='/certificate/style-three' element={<CertificateThree />} />
+
+            <Route path='*' element={<NotFound />} />
+          </>
+        )}
+      </Routes>
+    </Router>
+  );
 }

@@ -46,13 +46,14 @@ export default function Welcome() {
           defaultValue="post"
           className="full mt-32 mb-24 flex flex-col items-start justify-center px-[12vw]"
         >
-          <TabsList className="grid w-full grid-cols-6 w-[580px]">
+          <TabsList className="grid w-full grid-cols-7 w-[520px]">
             <TabsTrigger value="post">Post</TabsTrigger>
             <TabsTrigger value="reel">Reel</TabsTrigger>
             <TabsTrigger value="fact">Fact</TabsTrigger>
             <TabsTrigger value="joke">Joke</TabsTrigger>
             <TabsTrigger value="quote">Quote</TabsTrigger>
-            <TabsTrigger value="certificate">Certificate</TabsTrigger>
+            <TabsTrigger value="certificate">Cert.</TabsTrigger>
+            <TabsTrigger value="twibbon">Twibbon</TabsTrigger>
           </TabsList>
           <TabsContent value="post">
             <div className="flex flex-col w-full mt-8">
@@ -245,6 +246,38 @@ export default function Welcome() {
                       >
                         <img
                           src={certificateExp.src}
+                          className="w-full object-cover border"
+                        />
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="twibbon">
+            <div className="flex flex-col w-full mt-8">
+              <p className="font-semibold text-3xl mb-1">
+                Twibbon Template
+              </p>
+              <p className="text-light opacity-50 text-sm mb-2">
+                Hasil export menggunakan 1:1
+              </p>
+              <div
+                className="grid grid-cols-2 gap-1 lg:grid-cols-3 mt-4"
+                id="template"
+                ref={myRef}
+              >
+                {data.TwibbonProjects.map((twibbonExp, i) => {
+                  return (
+                    <div className="flex flex-col">
+                      <Link
+                        key={twibbonExp.id}
+                        to={twibbonExp.link}
+                        className="relative flex-shirk-0 w-auto justify-center overflow-y-hidden"
+                      >
+                        <img
+                          src={twibbonExp.src}
                           className="w-full object-cover border"
                         />
                       </Link>
