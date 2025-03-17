@@ -27,7 +27,7 @@ function TwibbonStyleOne() {
   const [inputEventDescSubTitle, setInputEventDescSubTitle] = useState('1 YEAR OF EXPERIENCE');
   const [inputPersonName, setInputPersonName] = useState('JARED PALMER');
   const [inputPersonPosition, setInputPersonPosition] = useState('Design Engineer');
-  const [inputPersonCaption, setInputPersonCaption] = useState('Your hard work, dedication, and exceptional performance have truly shined.');
+  const [inputPersonCaption, setInputPersonCaption] = useState('Outstanding Contribution! Your relentless efforts and significant performance have made a huge impact on the success of us all.');
   const constraintsRef = useRef(null);
 
   const handleImageChange = async (event) => {
@@ -99,6 +99,11 @@ function TwibbonStyleOne() {
   const [sliderValueFontSize, setSliderValueFontSize] = useState(24);
   const handleSliderChangeFontSize = (event) => {
     setSliderValueFontSize(event.target.value);
+  };
+
+  const [sliderValueQuoteWidth, setSliderValueQuoteWidth] = useState(500);
+  const handleSliderChangeQuoteWidth = (event) => {
+    setSliderValueQuoteWidth(event.target.value);
   };
 
   const [sliderValueTranslateX, setSliderValueTranslateX] = useState(0);
@@ -195,7 +200,7 @@ function TwibbonStyleOne() {
 
               {isCheckedTitle ? ( 
                 <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/1YearOfExcellence.png' />
+                  <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/1YearOfExcellence-1.png' />
                 </div>
               ) : null}
 
@@ -246,7 +251,7 @@ function TwibbonStyleOne() {
               ) : null}
               
               {isCheckedTitle ? ( 
-              <div className='absolute bottom-[45px] z-[999] w-[400px] text-center'>
+              <div className='absolute top-[720px] z-[999] text-center' style={{ width: `${sliderValueQuoteWidth}px` }}>
                 <div className='leaguespartan text-[17.7px] leading-[18px] font-light text-[#b22623]'>
                     <HtmlRenderer html={inputPersonCaption} />
                 </div>
@@ -305,6 +310,10 @@ function TwibbonStyleOne() {
                   modules={{ toolbar: fullToolbarOptions }}
                   className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
                 />
+                <div className='flex flex-col gap-1'>
+                  <p className='text-sm'>Width Size ({sliderValueQuoteWidth}px)</p>
+                  <input type="range" min={200} max={600} value={sliderValueQuoteWidth} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeQuoteWidth} />
+                </div>
                 <div className='flex flex-col gap-1'>
                   <p className='text-sm'>Zoom ({sliderValueScale})</p>
                   <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />

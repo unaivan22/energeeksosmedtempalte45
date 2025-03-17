@@ -28,6 +28,7 @@ function TwibbonStyleTwo() {
   const [inputEventDescSubTitle, setInputEventDescSubTitle] = useState('3 Year Dedication');
   const [inputPersonName, setInputPersonName] = useState('JARED PALMER');
   const [inputPersonPosition, setInputPersonPosition] = useState('Design Engineer');
+  const [inputPersonCaption, setInputPersonCaption] = useState('Outstanding Contribution! Your relentless efforts and significant performance have made a huge impact on the success of us all.');
   const constraintsRef = useRef(null);
 
   const handleImageChange = async (event) => {
@@ -122,6 +123,15 @@ function TwibbonStyleTwo() {
     setInputPersonPosition(value);
   };
 
+  const handleInputChangePersonCaption = (value) => {
+    setInputPersonCaption(value);
+  };
+
+  const [sliderValueQuoteWidth, setSliderValueQuoteWidth] = useState(500);
+  const handleSliderChangeQuoteWidth = (event) => {
+    setSliderValueQuoteWidth(event.target.value);
+  };
+
   const HtmlRenderer = ({ html }) => {
     const parsedHtml = parse(html, {
       replace: (domNode) => {
@@ -191,7 +201,7 @@ function TwibbonStyleTwo() {
 
               {isCheckedTitle ? ( 
                 <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/1YearOfExcellence-2.png' />
+                  <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/1YearOfExcellence-2.png' />
                 </div>
               ) : null}
 
@@ -234,9 +244,17 @@ function TwibbonStyleTwo() {
               ) : null}
 
               {isCheckedTitle ? ( 
-              <div className='absolute bottom-[90px] z-[999]'>
+              <div className='absolute bottom-[100px] z-[999]'>
                 <div className='poppins text-[26.7px] leading-[26px] font-semibold text-[#e4ba35] neon'>
                     <HtmlRenderer html={inputPersonPosition} />
+                </div>
+              </div>
+              ) : null}
+
+              {isCheckedTitle ? ( 
+              <div className='absolute top-[720px] z-[999] text-center' style={{ width: `${sliderValueQuoteWidth}px` }}>
+                <div className='leaguespartan text-[17.7px] leading-[18px] font-light text-white'>
+                    <HtmlRenderer html={inputPersonCaption} />
                 </div>
               </div>
               ) : null}
@@ -286,6 +304,17 @@ function TwibbonStyleTwo() {
                   modules={{ toolbar: fullToolbarOptions }}
                   className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
                 />
+                <ReactQuill
+                  theme="snow"
+                  value={inputPersonCaption}
+                  onChange={handleInputChangePersonCaption}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
+                <div className='flex flex-col gap-1'>
+                  <p className='text-sm'>Width Size ({sliderValueQuoteWidth}px)</p>
+                  <input type="range" min={200} max={600} value={sliderValueQuoteWidth} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeQuoteWidth} />
+                </div>
                 <div className='flex flex-col gap-1'>
                   <p className='text-sm'>Zoom ({sliderValueScale})</p>
                   <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />

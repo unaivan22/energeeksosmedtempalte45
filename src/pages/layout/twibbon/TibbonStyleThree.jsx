@@ -194,7 +194,7 @@ function TibbonStyleThree() {
 
               {isCheckedTitle ? ( 
                 <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/1YearOfExcellence-3.png' />
+                  <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/1YearOfExcellence-3.png' />
                 </div>
               ) : null}
 

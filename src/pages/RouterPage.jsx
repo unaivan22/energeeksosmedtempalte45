@@ -338,14 +338,6 @@ export default function RouterPage() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path='/twibbon/style-three'
-              element={
-                <ProtectedRoute>
-                  <TibbonStyleThree />
-                </ProtectedRoute>
-              }
-            />
 
             <Route path='*' element={<NotFound />} />
           </>

@@ -16,6 +16,7 @@ import { Walktour } from 'walktour'
 import UploadAnimation from '../utils/UploadAnimation';
 import LogoRedXs from '../utils/LogoRedXs';
 import LogoWhiteXs from '../utils/LogoWhiteXs';
+import LogoWhiteXxs from '../utils/LogoWhiteXxs';
 
 function TwibbonLebaran2025() {
   const [image, setImage] = useState(null);
@@ -167,43 +168,46 @@ function TwibbonLebaran2025() {
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
         <div className='gap-6 mt-16 grid md:grid-cols-4 grid-cols-1'>
-          <div className={`col-span-4 md:col-span-3 safe-area flex items-start justify-start w-full scale-[1] md:scale-[.85]`}>
+          <div className={`col-span-4 md:col-span-3 safe-area flex items-start justify-start w-full scale-[1] md:scale-[.85] mb-24 md:mb-2`}>
             <div className={`w-[400px] md:w-[800px] aspect-square overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
               
               {previewURL && (
-                <div className='cursor-grab bottom-12 absolute z-50' >
+                <div className='cursor-grab top-48 absolute z-50' >
                   <motion.div className="" ref={constraintsRef} />
-                  <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX} w-[400px]`}  drag dragConstraints={constraintsRef}/>
+                  <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX} w-[200px] md:w-[400px]`}  drag dragConstraints={constraintsRef}/>
                 </div>
               )}
 
               {isCheckedTitle ? ( 
                 <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/lebaran2025.png' />
+                  <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/lebaran2025.png' />
                 </div>
               ) : null}
 
               {isCheckedTitle ? ( 
-              <div className='absolute z-[999]'>
+              <div className='absolute -translate-y-[28px] md:translate-y-[0px] z-[999]'>
                 <div className='w-[400px] md:w-[800px] aspect-square'>
-                  <div className='flex flex-col items-center w-full justify-center text-center mt-32'>
+                  <div className='hidden md:flex flex-col items-center w-full justify-center text-center mt-32'>
                     <LogoWhiteXs />
+                  </div>
+                  <div className='flex md:hidden flex-col items-center w-full justify-center text-center mt-32'>
+                    <LogoWhiteXxs />
                   </div>
                 </div>
               </div>
               ) : null}
 
               {isCheckedTitle ? ( 
-              <div className='absolute bottom-[90px] z-[999]'>
-                <div className='flex flex-col items-center gap-4 mb-4'>
-                  <div className='berkshireswash text-[28px] leading-[28px] font-bold text-white text-center'>
+              <div className='absolute bottom-[20px] md:bottom-[80px] z-[999]'>
+                <div className='flex flex-col items-center gap-0 md:gap-4 md:mb-2 '>
+                  <div className='berkshireswash text-[18px] md:text-[28px] md:leading-[28px] font-bold text-white text-center'>
                     <HtmlRenderer html={inputEventDescTitle} />
                   </div>
-                  <div className='berkshireswash text-[60px] leading-[60px] font-bold text-white'>
+                  <div className='berkshireswash text-[26px] md:text-[60px] md:leading-[60px]  font-bold text-white'>
                     <HtmlRenderer html={inputEventDescSubTitle} />
                   </div>
                 </div>
-                <div className='berkshireswash text-[23.7px] leading-[23px] font-bold text-white text-center'>
+                <div className='berkshireswash text-[14.7px] md:text-[23.7px] md:leading-[22px]  font-bold text-white text-center'>
                     <HtmlRenderer html={inputPersonPosition} />
                 </div>
               </div>
