@@ -185,7 +185,25 @@
             "link" : "twibbon/style-one/",
             "projectname" : "Style One",
             "type" : "Fact",
-            "src" : "/certificate/1.webp"
+            "src" : "/twibbon/1.webp"
+        },{
+            "id" : "1",
+            "link" : "twibbon/style-two/",
+            "projectname" : "Style Two",
+            "type" : "Fact",
+            "src" : "/twibbon/2.webp"
+        },{
+            "id" : "2",
+            "link" : "twibbon/style-three/",
+            "projectname" : "Style Three",
+            "type" : "Fact",
+            "src" : "/twibbon/3.webp"
+        },{
+            "id" : "3",
+            "link" : "twibbon/style-lebaran2025/",
+            "projectname" : "Style One",
+            "type" : "Fact",
+            "src" : "/twibbon/lebaran2025.webp"
         }
     ]
 }

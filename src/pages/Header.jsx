@@ -2,6 +2,7 @@ import { ModeToggle } from '@/components/mode-toggle'
 import { LucideArrowUpRight } from 'lucide-react'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import ClearCookies from './ClearCookies'
 
 export default function Header() {
   return (
@@ -56,7 +57,10 @@ export default function Header() {
                 </div>
                 </div>
             </nav>
-            <ModeToggle />
+            <div className='flex gap-3'>
+                <ClearCookies />
+                <ModeToggle />
+            </div>
         </header>
     </div>
   )

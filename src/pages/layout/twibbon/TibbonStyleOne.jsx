@@ -10,36 +10,25 @@ import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-import * as ExifReader from 'exifreader';
 
 import { motion } from "framer-motion";
 import { Walktour } from 'walktour'
-import TypefaceTitle from '../utils/TypefaceTitle';
 import UploadAnimation from '../utils/UploadAnimation';
-import LogoWhite from '../utils/LogoWhite';
+import LogoRedXs from '../utils/LogoRedXs';
 
-function TwibbobOne() {
+function TwibbonStyleOne() {
   const [image, setImage] = useState(null);
   const [previewURL, setPreviewURL] = useState('');
   const elementRef = useRef(null);
   const [isDisable, setIsDisable] = useState(false);
-  const [isExample, setIsExample] = useState(true);
-  const [isChecked, setIsChecked] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [isCheckedCaption, setIsCheckedCaption] = useState(false);
   const [isCheckedTitle, setIsCheckedTitle] = useState(true);
-  const [isCheckedSubTitle, setIsCheckedSubTitle] = useState(true);
-  const [inputEventDescTitle, setInputEventDescTitle] = useState('Enter title text');
-  const [inputEventDescSubTitle, setInputEventDescSubTitle] = useState('Enter subtitle text');
+  const [inputEventDescTitle, setInputEventDescTitle] = useState('CELEBRATING');
+  const [inputEventDescSubTitle, setInputEventDescSubTitle] = useState('1 YEAR OF EXPERIENCE');
+  const [inputPersonName, setInputPersonName] = useState('JARED PALMER');
+  const [inputPersonPosition, setInputPersonPosition] = useState('Design Engineer');
+  const [inputPersonCaption, setInputPersonCaption] = useState('Your hard work, dedication, and exceptional performance have truly shined.');
   const constraintsRef = useRef(null);
-  const [isCheckedCopyright, setIsCheckedCopyright] = useState(true);
-  const [inputEventDescCopyright, setInputEventDescCopyright] = useState('Google | Pinterest : ');
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
@@ -107,6 +96,11 @@ function TwibbobOne() {
     setSliderValueScale(event.target.value);
   };
 
+  const [sliderValueFontSize, setSliderValueFontSize] = useState(24);
+  const handleSliderChangeFontSize = (event) => {
+    setSliderValueFontSize(event.target.value);
+  };
+
   const [sliderValueTranslateX, setSliderValueTranslateX] = useState(0);
   const handleSliderChangeTranslateX = (event) => {
     setSliderValueTranslateX(event.target.value);
@@ -120,8 +114,16 @@ function TwibbobOne() {
     setInputEventDescSubTitle(value);
   };
 
-  const handleInputChangeEventCopyright = (value) => {
-    setInputEventDescCopyright(value);
+  const handleInputChangePersonName = (value) => {
+    setInputPersonName(value);
+  };
+
+  const handleInputChangePersonPosition = (value) => {
+    setInputPersonPosition(value);
+  };
+
+  const handleInputChangePersonCaption = (value) => {
+    setInputPersonCaption(value);
   };
 
   const HtmlRenderer = ({ html }) => {
@@ -136,6 +138,13 @@ function TwibbobOne() {
   
     return <>{parsedHtml}</>;
   };
+
+  const stripTags = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "";
+  };
+
+  const cleanText = stripTags(inputPersonName);
 
   const fullToolbarOptions = [
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -160,9 +169,6 @@ function TwibbobOne() {
           </div>
         </div>
       )}
-      {/* {isExample && (
-      <img src='https://raw.githubusercontent.com/unaivan22/assets/main/frame/frame.png' />
-      )} */}
 
       {isLoading && (
       <div className=' flex items-center justify-center w-full gap-x-2 text-sm py-4'>
@@ -181,22 +187,76 @@ function TwibbobOne() {
             <div className={`w-[400px] md:w-[800px] aspect-square overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
               
               {previewURL && (
-                <div className='cursor-grab top-0 absolute z-50' >
+                <div className='cursor-grab bottom-0 absolute z-50' >
                   <motion.div className="" ref={constraintsRef} />
-                  <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX}`}  drag dragConstraints={constraintsRef}/>
+                  <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX} w-[400px]`}  drag dragConstraints={constraintsRef}/>
                 </div>
               )}
 
               {isCheckedTitle ? ( 
                 <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/twibbonlayer2.png' />
+                  <img className='w-[400px] md:w-[800px] aspect-square' src='public/twibbon/layer/1YearOfExcellence.png' />
                 </div>
+              ) : null}
+
+              {isCheckedTitle ? ( 
+              <div className='absolute z-[999]'>
+                <div className='w-[400px] md:w-[800px] aspect-square'>
+                  <div className='flex flex-col items-center w-full justify-center text-center mt-8'>
+                    <LogoRedXs />
+                    <div className='flex flex-col items-center mt-6 gap-2'>
+                      <div className='poppins text-[34px] leading-[32px] font-bold text-[#bd0f0c]'>
+                        <HtmlRenderer html={inputEventDescTitle} />
+                      </div>
+                      <div className='opensans text-[21px] leading-[21px] font-bold text-[#e7a23c]'>
+                        <HtmlRenderer html={inputEventDescSubTitle} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              ) : null}
+
+              {isCheckedTitle ? ( 
+              <div className='absolute bottom-[75px] z-[999]'>
+                <svg width="400" height="150" viewBox="0 0 400 150">
+                  <defs>
+                    <path id="curvePath" d="M 10,40 Q 200,110 390,40" fill="transparent" />
+                  </defs>
+                  <text
+                    fill="white"
+                    fontSize={sliderValueFontSize}
+                    fontWeight="bold"
+                    className="leaguespartan"
+                  >
+                    <textPath href="#curvePath" startOffset="50%" textAnchor="middle">
+                      {cleanText}
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              ) : null}
+
+              {isCheckedTitle ? ( 
+              <div className='absolute bottom-[90px] z-[999]'>
+                <div className='leaguespartan text-[22.7px] leading-[22px] font-bold text-black'>
+                    <HtmlRenderer html={inputPersonPosition} />
+                </div>
+              </div>
+              ) : null}
+              
+              {isCheckedTitle ? ( 
+              <div className='absolute bottom-[45px] z-[999] w-[400px] text-center'>
+                <div className='leaguespartan text-[17.7px] leading-[18px] font-light text-[#b22623]'>
+                    <HtmlRenderer html={inputPersonCaption} />
+                </div>
+              </div>
               ) : null}
               
             </div>
           </div>
           {previewURL && (
-          <div className='col-span-4 md:col-span-1 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl h-fit mt-0 md:mt-16 w-full'>
+          <div className='col-span-4 md:col-span-1 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl h-fit mt-0 md:mt-16 w-full -translate-y-[12vh]'>
             <div className='flex flex-col gap-y-2 justify-between h-full'>
               <div className='flex flex-col gap-y-3'>
                 <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
@@ -206,6 +266,45 @@ function TwibbobOne() {
                   <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Twibbon Layer</span>
                 </label>
                 <p className='text-xs opacity-70 font-light pb-4'>Untuk mengatur posisi foto anda silahkan switch off dulu</p>
+                <ReactQuill
+                  theme="snow"
+                  value={inputEventDescTitle}
+                  onChange={handleInputChangeEventDescTitle}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
+                <ReactQuill
+                  theme="snow"
+                  value={inputEventDescSubTitle}
+                  onChange={handleInputChangeEventDescSubTitle}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
+                <ReactQuill
+                  theme="snow"
+                  value={inputPersonName}
+                  onChange={handleInputChangePersonName}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
+                <div className='flex flex-col gap-1'>
+                  <p className='text-sm'>Font Size ({sliderValueFontSize}px)</p>
+                  <input type="range" min={20} max={50} value={sliderValueFontSize} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeFontSize} />
+                </div>
+                <ReactQuill
+                  theme="snow"
+                  value={inputPersonPosition}
+                  onChange={handleInputChangePersonPosition}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
+                <ReactQuill
+                  theme="snow"
+                  value={inputPersonCaption}
+                  onChange={handleInputChangePersonCaption}
+                  modules={{ toolbar: fullToolbarOptions }}
+                  className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                />
                 <div className='flex flex-col gap-1'>
                   <p className='text-sm'>Zoom ({sliderValueScale})</p>
                   <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
@@ -233,4 +332,4 @@ function TwibbobOne() {
   );
 }
 
-export default TwibbobOne;
+export default TwibbonStyleOne;
