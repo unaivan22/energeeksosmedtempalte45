@@ -200,7 +200,7 @@ function PostStyleFifteen() {
             {isCheckedOverlay && (
               <div className='z-50 pb-6 absolute bottom-[200px] w-[1040px]'>
                 <div className='flex flex-col text-left gap-5 htmlrender-detail'>
-                  <h1 className='text-white text-[3.3rem] w-full font-bold leading-none'  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <h1 className='text-white text-[3.3rem] w-full font-bold leading-[4.1rem]'  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                   <p className='text-white w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>

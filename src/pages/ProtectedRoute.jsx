@@ -40,12 +40,17 @@ const ProtectedRoute = ({ children }) => {
     <div className="flex flex-col items-center justify-center h-screen">
       <Card className="w-[350px]">
         <CardHeader>
-          <CardTitle>Masuk Dulu</CardTitle>
+          <CardTitle>
+            <div className='flex flex-col gap-4'>
+            <img className='w-12' src='/e.svg' />
+            <p className='mb-1'>Masuk Dulu</p>
+            </div>
+          </CardTitle>
           <CardDescription>Masukkan password, jika lupa tanya designer.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
-            <p className="block mb-2">Enter Password:</p>
+            <p className="block mb-2 text-sm opacity-80 font-light">Password:</p>
             <Input
               type="password"
               value={password}

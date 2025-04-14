@@ -20,19 +20,17 @@ import {
 
 import { motion } from "framer-motion";
 import { Walktour } from 'walktour'
-import LogoWhite from '../utils/LogoWhite';
-import LogoRed from '../utils/LogoRed';
 import TypefaceTitle from '../utils/TypefaceTitle';
 import UploadAnimation from '../utils/UploadAnimation';
+import LogoRed from '../utils/LogoRed';
 
-function PostStyleFourteen() {
+function PostStyleEighteen() {
   const [image, setImage] = useState(null);
   const [previewURL, setPreviewURL] = useState('');
   const elementRef = useRef(null);
   const [isDisable, setIsDisable] = useState(false);
   const [isCheckedOverlay, setIsCheckedOverlay] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [isCheckedCaption, setIsCheckedCaption] = useState(false);
   const [isCheckedTitle, setIsCheckedTitle] = useState(true);
   const [isCheckedSubTitle, setIsCheckedSubTitle] = useState(true);
 
@@ -108,6 +106,11 @@ function PostStyleFourteen() {
     setSliderValueScale(event.target.value);
   };
 
+  const [rotateValueScale, setRotateValueScale] = useState(1);
+  const handleRotateChangeScale = (event) => {
+    setRotateValueScale(event.target.value);
+  };
+
   const handleInputChangeEventDescTitle = (value) => {
     setInputEventDescTitle(value);
   };
@@ -119,7 +122,7 @@ function PostStyleFourteen() {
   const handleInputChangeEventCopyright = (value) => {
     setInputEventDescCopyright(value);
   };
-  
+
   const HtmlRenderer = ({ html }) => {
     const parsedHtml = parse(html, {
       replace: (domNode) => {
@@ -181,15 +184,15 @@ function PostStyleFourteen() {
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
         <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
-          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
+          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center renderthis bg-white` } ref={elementRef}>
             {previewURL && (
+              // <img src={previewURL} alt="Preview" className='w-full object-cover' />
               <div className='cursor-grab top-0' id='StepName'>
                 <motion.div className="" ref={constraintsRef} />
-                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 left-0 grayscale scale-${sliderValueScale}`}  drag dragConstraints={constraintsRef}/>
+                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 -rotate-[12deg] left-0 scale-${sliderValueScale} rotate-1 rotate-${rotateValueScale} border-t-[40px] border-t-[#E74C3C]`}  drag dragConstraints={constraintsRef}/>
               </div>
             )}
             
-
             {isCheckedOverlay && (
               <div className='absolute top-10 left-20 z-50'>
                 <LogoRed />
@@ -197,10 +200,10 @@ function PostStyleFourteen() {
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute top-[250px] w-[900.1px]'>
-                <div className='flex flex-col text-center gap-3 htmlrender-detail'>
-                  <h1 className='text-black text-[3.3em] w-full font-bold leading-[4.2rem]' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                  <p className='text-black w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+              <div className='z-50 pb-6 absolute top-[250px] w-[940px]'>
+                <div className='flex flex-col text-left gap-5 htmlrender-detail'>
+                  <h1 className='text-[#E74C3C] text-[3.2rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className='text-[#E74C3C] w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>
             )}
@@ -213,7 +216,7 @@ function PostStyleFourteen() {
               </div>
             )}
 
-            <svg width="1154" height="1154" className='z-50 scale-[.5] absolute -top-[460px] -right-[500px] opacity-10' viewBox="0 0 577 577" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="1154" height="1154" className='z-50 scale-[.5] absolute -top-[460px] -right-[500px] opacity-20' viewBox="0 0 577 577" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_38_123)">
               <path d="M288.38 576.413C447.469 576.413 576.436 447.446 576.436 288.357C576.436 129.268 447.469 0.300781 288.38 0.300781C129.291 0.300781 0.324219 129.268 0.324219 288.357C0.324219 447.446 129.291 576.413 288.38 576.413Z" fill="url(#paint0_radial_38_123)"/>
               </g>
@@ -228,49 +231,6 @@ function PostStyleFourteen() {
               </defs>
             </svg>
 
-
-            <svg width="1154" height="1154" className='scale-[.4] absolute -bottom-[500px] -left-[550px] opacity-50' viewBox="0 0 577 577" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_38_123)">
-              <path d="M288.38 576.413C447.469 576.413 576.436 447.446 576.436 288.357C576.436 129.268 447.469 0.300781 288.38 0.300781C129.291 0.300781 0.324219 129.268 0.324219 288.357C0.324219 447.446 129.291 576.413 288.38 576.413Z" fill="url(#paint0_radial_38_123)"/>
-              </g>
-              <defs>
-              <radialGradient id="paint0_radial_38_123" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(288.38 288.357) rotate(90) scale(288.056)">
-              <stop stop-color="#B33022"/>
-              <stop offset="1" stop-color="#B33022" stop-opacity="0"/>
-              </radialGradient>
-              <clipPath id="clip0_38_123">
-              <rect width="577" height="577" fill="white"/>
-              </clipPath>
-              </defs>
-            </svg>
-
-            <svg width="1154" height="1154" className='scale-[.5] absolute -bottom-[500px] -right-[550px] opacity-50' viewBox="0 0 577 577" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_38_123)">
-              <path d="M288.38 576.413C447.469 576.413 576.436 447.446 576.436 288.357C576.436 129.268 447.469 0.300781 288.38 0.300781C129.291 0.300781 0.324219 129.268 0.324219 288.357C0.324219 447.446 129.291 576.413 288.38 576.413Z" fill="url(#paint0_radial_38_123)"/>
-              </g>
-              <defs>
-              <radialGradient id="paint0_radial_38_123" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(288.38 288.357) rotate(90) scale(288.056)">
-              <stop stop-color="#B33022"/>
-              <stop offset="1" stop-color="#B33022" stop-opacity="0"/>
-              </radialGradient>
-              <clipPath id="clip0_38_123">
-              <rect width="577" height="577" fill="white"/>
-              </clipPath>
-              </defs>
-            </svg>
-
-            {isCheckedOverlay && (
-              <div className='absolute bottom-0 left-0 h-[340px] w-full opacity-50'>
-                <div className='bg-gradient-to-t from-[#E74C3C] via-[#E74C3C26] to-[#E74C3C00] h-full'></div>
-              </div>
-            )}
-
-            {isCheckedOverlay && (
-              <div className='absolute top-0 left-0 h-[1100px] w-full'>
-                <div className='bg-gradient-to-b from-[#ffffff] via-[#ffffff] to-[#ffffff00] h-full'></div>
-              </div>
-            )}
-            
           </div>
         </div>
         {previewURL && (
@@ -357,7 +317,11 @@ function PostStyleFourteen() {
               </Tabs>
               <div className='flex flex-col gap-1'>
                 <p className='text-sm'>Zoom ({sliderValueScale})</p>
-                <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
+                <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} /> 
+              </div>
+              <div className='flex flex-col gap-1'>
+                <p className='text-sm'>Rotate ({rotateValueScale})</p>
+                <input type="range" min={1} max={5} value={rotateValueScale} className="range w-full cursor-grabbing" step={1} onChange={handleRotateChangeScale} />
                 <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu, *issue di hosting </p>
               </div>
             </div>
@@ -381,4 +345,4 @@ function PostStyleFourteen() {
   );
 }
 
-export default PostStyleFourteen;
+export default PostStyleEighteen;

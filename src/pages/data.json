@@ -102,6 +102,12 @@
             "projectname" : "Style Seventeen",
             "type" : "Post",
             "src" : "/post/styleseventeenthumbnail.webp"
+        },{
+            "id" : "16",
+            "link" : "post/style-eighteen/",
+            "projectname" : "Style Eighteen",
+            "type" : "Post",
+            "src" : "/post/styleeighteenthumbnail.webp"
         }
     ],"ReelProjects": [
         {

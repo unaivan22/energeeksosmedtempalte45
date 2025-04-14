@@ -200,7 +200,7 @@ function PostStyleSix() {
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute top-[300px] w-[940px]'>
+              <div className='z-50 pb-6 absolute top-[200px] w-[940px]'>
                 <div className='flex flex-col text-left gap-5 htmlrender-detail'>
                   <h1 className='text-white text-[3.2rem] w-full font-bold leading-none italic' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                   <p className='text-white w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>

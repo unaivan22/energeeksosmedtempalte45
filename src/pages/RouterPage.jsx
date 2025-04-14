@@ -38,6 +38,7 @@ import TwibbonLebaran2025 from './layout/twibbon/TwibbonLebaran2025';
 import TwibbonStyleOne from './layout/twibbon/TibbonStyleOne';
 import TwibbonStyleTwo from './layout/twibbon/TibbonStyleTwo';
 import TibbonStyleThree from './layout/twibbon/TibbonStyleThree';
+import PostStyleEighteen from './layout/posts/PostStyleEighteen';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -197,10 +198,10 @@ export default function RouterPage() {
               }
             />
             <Route
-              path='/post/style-fiveteen'
+              path='/post/style-fifteen'
               element={
                 <ProtectedRoute>
-                  <PostStyleFive />
+                  <PostStyleFifteen />
                 </ProtectedRoute>
               }
             />
@@ -217,6 +218,14 @@ export default function RouterPage() {
               element={
                 <ProtectedRoute>
                   <PostStyleSeventeen />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-eighteen'
+              element={
+                <ProtectedRoute>
+                  <PostStyleEighteen />
                 </ProtectedRoute>
               }
             />

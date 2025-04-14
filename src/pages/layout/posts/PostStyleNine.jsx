@@ -197,9 +197,9 @@ function PostStyleNine() {
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 absolute top-[250px] w-[940px]'>
+              <div className='z-50 pb-6 absolute top-[220px] w-[940px]'>
                 <div className='flex flex-col text-left gap-5 htmlrender-detail'>
-                  <h1 className='text-[#E74C3C] text-[3.2rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <h1 className='text-[#E74C3C] text-[3.2rem] w-full font-bold leading-[4.2rem]' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                   <p className='text-[#E74C3C] w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>
