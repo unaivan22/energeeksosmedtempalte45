@@ -107,6 +107,16 @@ function PostStyleSeventeen() {
     setSliderValueScale(event.target.value);
   };
 
+  const [sliderEventDescTitle, setSliderEventDescTitle] = useState(48);
+  const handleSliderChangeEventDescTitleScale = (event) => {
+    setSliderEventDescTitle(event.target.value);
+  };
+
+  const [sliderEventDescSubTitle, setSliderEventDescSubTitle] = useState(26);
+  const handleSliderChangeEventDescSubTitleScale = (event) => {
+    setSliderEventDescSubTitle(event.target.value);
+  };
+
   const handleInputChangeEventDescTitle = (value) => {
     setInputEventDescTitle(value);
   };
@@ -198,8 +208,8 @@ function PostStyleSeventeen() {
             {isCheckedOverlay && (
               <div className='z-50 pb-6 absolute bottom-[200px] w-[940px]'>
                 <div className='flex flex-row text-left gap-12 htmlrender-detail'>
-                  <h1 className='text-black text-[3rem] w-full font-bold leading-[4rem]' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                  <p className='text-black w-full text-[1.6rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                  <h1 className={`text-black font-size-${sliderEventDescTitle} w-full font-bold leading-[4rem]`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className={`text-black w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                 </div>
               </div>
             )}
@@ -303,6 +313,10 @@ function PostStyleSeventeen() {
                           className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                           />
                       ) : null} 
+                      <div className='flex flex-col gap-1'>
+                        <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
+                        <input type="range" min={1} max={60} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
+                      </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="subtitle">
@@ -325,6 +339,10 @@ function PostStyleSeventeen() {
                         className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                         />
                       ) : null} 
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderEventDescSubTitle})</p>
+                      <input type="range" min={1} max={60} value={sliderEventDescSubTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescSubTitleScale} />
+                    </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="copyright">

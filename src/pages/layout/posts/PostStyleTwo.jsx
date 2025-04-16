@@ -111,6 +111,11 @@ function PostStyleTwo() {
     setSliderValueScale(event.target.value);
   };
 
+  const [sliderEventDescTitle, setSliderEventDescTitle] = useState(56);
+  const handleSliderChangeEventDescTitleScale = (event) => {
+    setSliderEventDescTitle(event.target.value);
+  };
+
   const handleInputChangeEventDesc = (value) => {
     setInputEventDescDesc(value);
   };
@@ -205,7 +210,7 @@ function PostStyleTwo() {
                 {isCheckedDesc && (
                 <div className='flex flex-col text-left htmlrender-detail'>
                   <h1 className='text-white text-[128px] w-full text-left leading-[0] mt-32'>"</h1>
-                  <h1 className='text-white text-[3rem] leading-[3.5rem] w-full text-right leading-tight' id='title'>{isCheckedDesc ? ( <div><HtmlRenderer html={inputEventDescDesc} /></div> ) : null} </h1>
+                  <h1 className={`text-white text-[3rem] font-size-${sliderEventDescTitle} w-full text-right`} id='title'>{isCheckedDesc ? ( <div><HtmlRenderer html={inputEventDescDesc} /></div> ) : null} </h1>
                   <h1 className='text-white text-[128px] w-full text-right leading-tight -translate-y-[16px]'>"</h1>
                 </div>
                 )}
@@ -271,7 +276,11 @@ function PostStyleTwo() {
                           modules={{ toolbar: fullToolbarOptions }}
                           className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                           />
-                      ) : null} 
+                      ) : null}
+                      <div className='flex flex-col gap-1'>
+                        <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
+                        <input type="range" min={1} max={100} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
+                      </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="nama">

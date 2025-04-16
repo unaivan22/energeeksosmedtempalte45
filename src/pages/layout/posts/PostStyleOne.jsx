@@ -107,6 +107,16 @@ function PostStyleOne() {
     setSliderValueScale(event.target.value);
   };
 
+  const [sliderEventDescTitle, setSliderEventDescTitle] = useState(60);
+  const handleSliderChangeEventDescTitleScale = (event) => {
+    setSliderEventDescTitle(event.target.value);
+  };
+
+  const [sliderEventDescSubTitle, setSliderEventDescSubTitle] = useState(35);
+  const handleSliderChangeEventDescSubTitleScale = (event) => {
+    setSliderEventDescSubTitle(event.target.value);
+  };
+
   const [sliderValueTranslateX, setSliderValueTranslateX] = useState(0);
   const handleSliderChangeTranslateX = (event) => {
     setSliderValueTranslateX(event.target.value);
@@ -208,8 +218,8 @@ function PostStyleOne() {
             {previewURL && (
               <div className='z-50 pb-16 absolute bottom-0 w-[1040px]'>
                 <div className='flex flex-col text-left gap-4 htmlrender-detail'>
-                  <h1 className='text-white text-[3.8rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                  <p className='text-white w-full text-[2.2rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                  <h1 className={`text-white font-size-${sliderEventDescTitle} w-full font-bold leading-none`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className={`text-white w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
                   <p className='text-white w-full text-[2rem] font-light text-center mt-8'> {isCheckedCopyright ? ( <div className='flex items-center gap-2 justify-start'><Camera className='w-8 h-8' /> <HtmlRenderer html={inputEventDescCopyright} /></div> ) : null}</p>
                 </div>
               </div>
@@ -289,6 +299,10 @@ function PostStyleOne() {
                           className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                           />
                       ) : null} 
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
+                      <input type="range" min={1} max={100} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
+                    </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="subtitle">
@@ -310,7 +324,11 @@ function PostStyleOne() {
                         modules={{ toolbar: fullToolbarOptions }}
                         className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                         />
-                      ) : null} 
+                      ) : null}
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderEventDescSubTitle})</p>
+                      <input type="range" min={1} max={100} value={sliderEventDescSubTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescSubTitleScale} />
+                    </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="copyright">

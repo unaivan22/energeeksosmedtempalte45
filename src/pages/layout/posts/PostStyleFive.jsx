@@ -107,6 +107,16 @@ function PostStyleFive() {
     setSliderValueScale(event.target.value);
   };
 
+  const [sliderEventDescTitle, setSliderEventDescTitle] = useState(52);
+  const handleSliderChangeEventDescTitleScale = (event) => {
+    setSliderEventDescTitle(event.target.value);
+  };
+
+  const [sliderEventDescSubTitle, setSliderEventDescSubTitle] = useState(29);
+  const handleSliderChangeEventDescSubTitleScale = (event) => {
+    setSliderEventDescSubTitle(event.target.value);
+  };
+
   const handleInputChangeEventDescTitle = (value) => {
     setInputEventDescTitle(value);
   };
@@ -199,8 +209,8 @@ function PostStyleFive() {
             {isCheckedOverlay && (
               <div className='z-50 pb-6 absolute top-[230px] w-[940px]'>
                 <div className='flex flex-col text-center gap-8 htmlrender-detail'>
-                  <p className='text-[#E74C3C] w-full text-[1.8rem]'>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
-                  <h1 className='text-[#E74C3C] text-[3.2rem] w-full font-bold leading-none' id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className={`text-[#E74C3C] w-full font-size-${sliderEventDescSubTitle}`} >{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                  <h1 className={`text-[#E74C3C] font-size-${sliderEventDescTitle} w-full font-bold leading-none`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                 </div>
               </div>
             )}
@@ -309,7 +319,11 @@ function PostStyleFive() {
                           modules={{ toolbar: fullToolbarOptions }}
                           className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                           />
-                      ) : null} 
+                      ) : null}
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
+                      <input type="range" min={1} max={100} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
+                    </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="subtitle">
@@ -331,7 +345,11 @@ function PostStyleFive() {
                         modules={{ toolbar: fullToolbarOptions }}
                         className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
                         />
-                      ) : null} 
+                      ) : null}
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderEventDescSubTitle})</p>
+                      <input type="range" min={1} max={100} value={sliderEventDescSubTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescSubTitleScale} />
+                    </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="copyright">
