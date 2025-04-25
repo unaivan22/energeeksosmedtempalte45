@@ -201,7 +201,7 @@ function CertificateThree() {
 
       {previewURL && (
       <div className='relative gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
         <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-x-[5vw]`}>
@@ -280,7 +280,7 @@ function CertificateThree() {
         <div className='  absolute translate-y-[10vh] max-w-[400px] top-0 right-0 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl'>
           <div className='flex flex-col gap-y-2 justify-between h-full'>
             <div className='flex flex-col gap-y-3'>
-              <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
+              <h1 className='font-semibold text-xl mb-4'>Customize</h1>
               <Tabs defaultValue="deskripsi" className="w-full">
                 <TabsList className="grid w-full grid-cols-4 mb-6">
                   <TabsTrigger value="deskripsi">Deskripsi</TabsTrigger>

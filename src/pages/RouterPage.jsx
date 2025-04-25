@@ -41,11 +41,11 @@ import TibbonStyleThree from './layout/twibbon/TibbonStyleThree';
 import PostStyleEighteen from './layout/posts/PostStyleEighteen';
 
 export default function RouterPage() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth < 1280); // Adjust breakpoint as needed
     };
 
     window.addEventListener('resize', handleResize);

@@ -3,10 +3,8 @@ import { useRef, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { toPng } from 'html-to-image';
 import heic2any from "heic2any";
-import Footer from '../../Footer';
 import { Button } from '@/components/ui/button';
-import { Camera, ChevronLeft, Download, Edit, Image, Loader2, RotateCcw, Upload, X } from 'lucide-react';
-import { Textarea } from "@/components/ui/textarea"
+import { Camera, ChevronLeft, Download, DraftingCompass, Edit, Image, Loader2, RotateCcw, Settings, Upload, User, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import ReactQuill from 'react-quill';
@@ -17,11 +15,25 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import * as ExifReader from 'exifreader';
 import { Walktour } from 'walktour'
 import TypefaceTitle from '../utils/TypefaceTitle';
 import UploadAnimation from '../utils/UploadAnimation';
 import LogoWhite from '../utils/LogoWhite';
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
 
 function PostStyleOne() {
   const [image, setImage] = useState(null);
@@ -39,6 +51,7 @@ function PostStyleOne() {
   const constraintsRef = useRef(null);
   const [isCheckedCopyright, setIsCheckedCopyright] = useState(true);
   const [inputEventDescCopyright, setInputEventDescCopyright] = useState('Google | Pinterest : ');
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
@@ -235,10 +248,104 @@ function PostStyleOne() {
 
       {previewURL && (
       <div className='relative gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+
+        <div className='sticky top-4 z-50 grid h-fit place-items-center'>
+          <Menubar>
+            <MenubarMenu>
+              <MenubarTrigger>Image</MenubarTrigger>
+              <MenubarContent>
+                <div className='flex flex-col gap-1 px-2 pt-2 max-w-[300px]'>
+                  <p className='text-sm'>Zoom ({sliderValueScale})</p>
+                  <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
+                  <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu, *issue di hosting </p>
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Title</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 w-[350px]">
+                  <div className="flex items-center justify-between mb-2">
+                      <label className="inline-flex items-end cursor-pointer mb-1">
+                        <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
+                        <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Title</span>
+                      </label>
+                      <TypefaceTitle />
+                    </div>
+                  <ReactQuill
+                    theme="snow"
+                    value={inputEventDescTitle}
+                    onChange={handleInputChangeEventDescTitle}
+                    modules={{ toolbar: fullToolbarOptions }}
+                    className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
+                    />
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
+                    <input type="range" min={1} max={100} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
+                  </div>
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Subtitle</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 max-w-[300px]">
+                  <div className="flex items-center pt-2">
+                      <label className="inline-flex items-center cursor-pointer mb-1">
+                        <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedSubTitle} onChange={() => setIsCheckedSubTitle(!isCheckedSubTitle)} />
+                        <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Sub Title</span>
+                      </label>
+                  </div>
+                  <ReactQuill
+                    theme="snow"
+                    value={inputEventDescSubTitle}
+                    onChange={handleInputChangeEventDescSubTitle}
+                    modules={{ toolbar: fullToolbarOptions }}
+                    className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
+                    />
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-sm'>Font Size ({sliderEventDescSubTitle})</p>
+                    <input type="range" min={1} max={100} value={sliderEventDescSubTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescSubTitleScale} />
+                  </div>
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Copyright</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 max-w-[300px]">
+                    <div className="flex items-center">
+                        <label className="inline-flex items-center cursor-pointer mb-1">
+                        <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedCopyright} onChange={() => setIsCheckedCopyright(!isCheckedCopyright)} />
+                          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Copyright</span>
+                        </label>
+                    </div>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputEventDescCopyright}
+                      onChange={handleInputChangeEventCopyright}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[130px] overflow-y-scroll'
+                    />
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger onClick={htmlToImageConvert}> <Download className='w-4 h-4 mr-2' /> Download</MenubarTrigger>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger className='text-rose-500' onClick={handleReset}> <RotateCcw className='w-4 h-4 mr-2' /> Reset</MenubarTrigger>
+            </MenubarMenu>
+          </Menubar>
+        </div>
+        
+        <div className={`safe-area flex items-center justify-center w-full scale-[.7] -translate-y-[20vh]`}>
           <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
             {previewURL && (
               // <img src={previewURL} alt="Preview" className='w-full object-cover' />
@@ -358,108 +465,10 @@ function PostStyleOne() {
 
           </div>
         </div>
-        {previewURL && (
-        <div className=' absolute translate-y-[10vh] max-w-[400px] top-0 right-0 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl'>
-          <div className='flex flex-col gap-y-2 justify-between h-full'>
-            <div className='flex flex-col gap-y-3'>
-              <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
-              <Tabs defaultValue="title" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-6">
-                  <TabsTrigger value="title">Title</TabsTrigger>
-                  <TabsTrigger value="subtitle">Sub Title</TabsTrigger>
-                  <TabsTrigger value="copyright">Copyright</TabsTrigger>
-                </TabsList>
-                <TabsContent value="title">
-                  <div className='flex flex-col gap-1'>
-                    <div className="flex items-center justify-between mb-2">
-                        <label className="inline-flex items-center cursor-pointer mb-1">
-                          <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
-                          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Title</span>
-                        </label>
-                        <TypefaceTitle />
-                    </div>
-                    {isCheckedTitle? ( 
-                        <ReactQuill
-                          theme="snow"
-                          value={inputEventDescTitle}
-                          onChange={handleInputChangeEventDescTitle}
-                          modules={{ toolbar: fullToolbarOptions }}
-                          className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
-                          />
-                      ) : null} 
-                    <div className='flex flex-col gap-1'>
-                      <p className='text-sm'>Font Size ({sliderEventDescTitle})</p>
-                      <input type="range" min={1} max={100} value={sliderEventDescTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescTitleScale} />
-                    </div>
-                  </div>
-                </TabsContent>
-                <TabsContent value="subtitle">
-                  <div className='flex flex-col gap-1'>
-                    <div className="flex items-center">
-                        {/* <input id="textSubTitle" type="checkbox" value="" checked={isCheckedSubTitle} onChange={() => setIsCheckedSubTitle(!isCheckedSubTitle)}  className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label htmlFor="textSubTitle" className="ms-2 text-sm font-medium ">Sub Title</label> */}
-                        <label className="inline-flex items-center cursor-pointer mb-1">
-                          <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedSubTitle} onChange={() => setIsCheckedSubTitle(!isCheckedSubTitle)} />
-                          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Sub Title</span>
-                        </label>
-                    </div>
-                    {isCheckedSubTitle? ( 
-                        <ReactQuill
-                        theme="snow"
-                        value={inputEventDescSubTitle}
-                        onChange={handleInputChangeEventDescSubTitle}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
-                        />
-                      ) : null}
-                    <div className='flex flex-col gap-1'>
-                      <p className='text-sm'>Font Size ({sliderEventDescSubTitle})</p>
-                      <input type="range" min={1} max={100} value={sliderEventDescSubTitle} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeEventDescSubTitleScale} />
-                    </div>
-                  </div>
-                </TabsContent>
-                <TabsContent value="copyright">
-                  <div className='flex flex-col gap-1'>
-                    <div className="flex items-center">
-                        <label className="inline-flex items-center cursor-pointer mb-1">
-                        <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedCopyright} onChange={() => setIsCheckedCopyright(!isCheckedCopyright)} />
-                          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Copyright</span>
-                        </label>
-                    </div>
-                    {isCheckedCopyright? ( 
-                        <ReactQuill
-                        theme="snow"
-                        value={inputEventDescCopyright}
-                        onChange={handleInputChangeEventCopyright}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
-                        />
-                      ) : null} 
-                  </div>
-                </TabsContent>
-              </Tabs>
-              <div className='flex flex-col gap-1'>
-                <p className='text-sm'>Zoom ({sliderValueScale})</p>
-                <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
-                <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu, *issue di hosting </p>
-              </div>
-              {/* <div className='flex flex-col gap-1'>
-                <p className='text-sm'>Translate X)</p>
-                <input type="range" min={1} max={5} value={sliderValueTranslateX} className="range w-full cursor-grabbing" step={1} onChange={handleSliderChangeTranslateX} />
-              </div> */}
-            </div>
-            <div className='flex gap-2 w-full'>
-              <Button variant='outline' className='w-full' onClick={handleReset} > <RotateCcw className='w-4 h-4 mr-2' /> Reset</Button>
-              <Button className='w-full' onClick={htmlToImageConvert}> <Download className='w-4 h-4 mr-2' /> Download</Button>
-            </div>
-          </div>
-        </div>
-        )}
+
       </div>
       )}
+
       {previewURL && (
         <Walktour
           steps={[

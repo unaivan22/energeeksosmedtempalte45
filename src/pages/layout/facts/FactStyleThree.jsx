@@ -177,10 +177,10 @@ function FactStyleThree() {
 
       {previewURL && (
       <div className='relative gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh]`}>
           <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
             {previewURL && (
               // <img src={previewURL} alt="Preview" className='w-full object-cover' />
@@ -224,7 +224,7 @@ function FactStyleThree() {
         <div className='absolute translate-y-[10vh] max-w-[400px] top-0 right-0 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl'>
           <div className='flex flex-col gap-y-2 justify-between h-full'>
             <div className='flex flex-col gap-y-3'>
-              <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
+              <h1 className='font-semibold text-xl mb-4'>Customize</h1>
               <Tabs defaultValue="title" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
                   <TabsTrigger value="title">Title</TabsTrigger>

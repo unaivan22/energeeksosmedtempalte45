@@ -175,10 +175,10 @@ function JokeStyleTwo() {
 
       {previewURL && (
       <div className='relative gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh]`}>
           <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis bg-[url('/joke/paper.webp')]` } ref={elementRef}>
             {previewURL && (
               // <img src={previewURL} alt="Preview" className='w-full object-cover' />
@@ -216,7 +216,7 @@ function JokeStyleTwo() {
           <div className='flex flex-col gap-y-2 justify-between h-full'>
             <div className='flex flex-col gap-y-3'>
               <div className="flex items-center items-center justify-between">
-                <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
+                <h1 className='font-semibold text-xl mb-4'>Customize</h1>
               </div>
               <Tabs defaultValue="subtitle" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">

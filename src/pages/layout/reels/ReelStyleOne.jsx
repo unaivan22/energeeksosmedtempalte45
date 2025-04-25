@@ -176,7 +176,7 @@ function ReelStyleOne() {
 
       {previewURL && (
       <div className='grid lg:grid-cols-4 md:grid-cols-6 gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
         <div className={`safe-area flex items-center justify-center w-full lg:col-span-2 md:col-span-4`}>
@@ -273,7 +273,7 @@ function ReelStyleOne() {
         <div className='lg:col-span-2 md:col-span-2 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl'>
           <div className='flex flex-col gap-y-2 justify-between h-full'>
             <div className='flex flex-col gap-y-3'>
-              <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
+              <h1 className='font-semibold text-xl mb-4'>Customize</h1>
               <Tabs defaultValue="title" className="w-full">
                 <TabsList className="grid w-full grid-cols-3 mb-6">
                   <TabsTrigger value="title">Title</TabsTrigger>

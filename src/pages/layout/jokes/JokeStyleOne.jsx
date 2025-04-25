@@ -180,10 +180,10 @@ function JokeStyleOne() {
 
       {previewURL && (
       <div className='relative gap-6 mt-12'>
-        <Link to='/' className='absolute'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh] -translate-x-[10vw]`}>
+        <div className={`safe-area flex items-start justify-start w-full scale-[.7] -translate-y-[20vh]`}>
           <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis bg-[url('/joke/paper.webp')]` } ref={elementRef}>
             {previewURL && (
               // <img src={previewURL} alt="Preview" className='w-full object-cover' />
@@ -222,7 +222,7 @@ function JokeStyleOne() {
           <div className='flex flex-col gap-y-2 justify-between h-full'>
             <div className='flex flex-col gap-y-3'>
               <div className="flex items-center items-center justify-between">
-                <h1 className='font-semibold text-xl mb-4'>Costumize</h1>
+                <h1 className='font-semibold text-xl mb-4'>Customize</h1>
                 {/* <label className="inline-flex items-center cursor-pointer mb-1">
                   <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedOverlay} onChange={() => setIsCheckedOverlay(!isCheckedOverlay)} />
                   <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>

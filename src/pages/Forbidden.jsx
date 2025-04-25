@@ -13,7 +13,10 @@ export default function Forbidden() {
             animationData={ufoData}
             className='w-72 h-72'
             />
-          <p>Can only access in desktop or tablet mode</p>
+          <div className='flex flex-col text-center'>
+            <p>Can only access in desktop mode</p>
+            <p className='text-sm font-light opacity-70'>Make sure to use full screen</p>
+          </div>
         </div>
     </div>
   )
