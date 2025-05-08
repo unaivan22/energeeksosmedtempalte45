@@ -37,7 +37,7 @@ import ProtectedRoute from './ProtectedRoute';
 import TwibbonLebaran2025 from './layout/twibbon/TwibbonLebaran2025';
 import TwibbonStyleOne from './layout/twibbon/TibbonStyleOne';
 import TwibbonStyleTwo from './layout/twibbon/TibbonStyleTwo';
-import TibbonStyleThree from './layout/twibbon/TibbonStyleThree';
+import TwibbonStyleThree from './layout/twibbon/TibbonStyleThree';
 import PostStyleEighteen from './layout/posts/PostStyleEighteen';
 
 export default function RouterPage() {
@@ -344,6 +344,14 @@ export default function RouterPage() {
               element={
                 <ProtectedRoute>
                   <TwibbonStyleTwo />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/twibbon/style-three'
+              element={
+                <ProtectedRoute>
+                  <TwibbonStyleThree />
                 </ProtectedRoute>
               }
             />

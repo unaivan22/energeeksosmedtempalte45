@@ -21,6 +21,21 @@ import { Walktour } from 'walktour'
 import UploadAnimation from '../utils/UploadAnimation';
 import LogoRedXs from '../utils/LogoRedXs';
 import LogoWhiteXs from '../utils/LogoWhiteXs';
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
 
 function TwibbonStyleTwo() {
   const [image, setImage] = useState(null);
@@ -189,170 +204,261 @@ function TwibbonStyleTwo() {
       )}
 
       {previewURL && (
-      <div>
-        <Link to='/' className='absolute mt-2 md:mt-6'>
+      <div className='mt-12'>
+        <Link to='/' className='fixed z-[999]'>
           <Button variant="outline" size="icon" className='rounded-full'><ChevronLeft /></Button>
         </Link>
-        <div className='gap-6 mt-16 grid md:grid-cols-4 grid-cols-1'>
-          <div className={`col-span-4 md:col-span-3 safe-area flex items-start justify-start w-full scale-[1] md:scale-[.85] -translate-y-[12vh]`}>
-            <div className={`w-[400px] md:w-[800px] aspect-square overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
-              
-              {previewURL && (
-                <div className='cursor-grab bottom-0 absolute z-50' >
-                  <motion.div className="" ref={constraintsRef} />
-                  <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX} w-[400px]`}  drag dragConstraints={constraintsRef}/>
-                </div>
-              )}
 
-              {isCheckedTitle ? ( 
-                <div className='absolute z-50'>
-                  <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/1YearOfExcellence-2.png' />
+        <div className='sticky top-4 z-50 grid h-fit place-items-center'>
+          <Menubar>
+            <MenubarMenu>
+              <MenubarTrigger>Image</MenubarTrigger>
+              <MenubarContent>
+                <div className='flex flex-col gap-4 px-2 pt-2 max-w-[300px]'>
+                  <label className="inline-flex items-center cursor-pointer mb-1">
+                    <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
+                    <div id='StepName' className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                    <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Twibbon Layer</span>
+                  </label>
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-sm'>Zoom ({sliderValueScale})</p>
+                    <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
+                    <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu, *issue di hosting </p>
+                  </div>
                 </div>
-              ) : null}
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Event</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 w-[250px]">
+                  <ReactQuill
+                    theme="snow"
+                    value={inputEventDescTitle}
+                    onChange={handleInputChangeEventDescTitle}
+                    modules={{ toolbar: fullToolbarOptions }}
+                    className='quill-editor rounded-xl bg-white h-[150px] overflow-y-scroll'
+                  />
+                  <ReactQuill
+                    theme="snow"
+                    value={inputEventDescSubTitle}
+                    onChange={handleInputChangeEventDescSubTitle}
+                    modules={{ toolbar: fullToolbarOptions }}
+                    className='quill-editor rounded-xl bg-white h-[150px] overflow-y-scroll'
+                  />
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Person</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 w-[250px]">
+                  <ReactQuill
+                      theme="snow"
+                      value={inputPersonName}
+                      onChange={handleInputChangePersonName}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[150px] overflow-y-scroll'
+                    />
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderValueFontSize}px)</p>
+                      <input type="range" min={20} max={50} value={sliderValueFontSize} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeFontSize} />
+                    </div>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputPersonPosition}
+                      onChange={handleInputChangePersonPosition}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[150px] overflow-y-scroll'
+                    />
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Desc</MenubarTrigger>
+              <MenubarContent>
+                <div className="flex flex-col gap-2 px-2 py-1 w-[250px]">
+                  <ReactQuill
+                    theme="snow"
+                    value={inputPersonCaption}
+                    onChange={handleInputChangePersonCaption}
+                    modules={{ toolbar: fullToolbarOptions }}
+                    className='quill-editor rounded-xl bg-white h-[250px] overflow-y-scroll'
+                  />
+                  <div className='flex flex-col gap-1'>
+                    <p className='text-sm'>Width Size ({sliderValueQuoteWidth}px)</p>
+                    <input type="range" min={200} max={600} value={sliderValueQuoteWidth} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeQuoteWidth} />
+                  </div>
+                </div>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger onClick={htmlToImageConvert}> <Download className='w-4 h-4 mr-2' /> Download</MenubarTrigger>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger className='text-rose-500' onClick={handleReset}> <RotateCcw className='w-4 h-4 mr-2' /> Reset</MenubarTrigger>
+            </MenubarMenu>
+          </Menubar>
+        </div>
 
-              {isCheckedTitle ? ( 
-              <div className='absolute z-[999]'>
-                <div className='w-[400px] md:w-[800px] aspect-square'>
-                  <div className='flex flex-col items-center w-full justify-center text-center mt-16'>
-                    <LogoWhiteXs />
-                    <div className='flex flex-col items-center mt-2 gap-2'>
-                      <p className='cookie text-[86px] leading-[86px] font-bold text-[#e4ba35] neon '>
-                        <HtmlRenderer html={inputEventDescTitle} />
-                      </p>
-                      <div className='yellowtail text-[32px] leading-[32px] text-white'>
-                        <HtmlRenderer html={inputEventDescSubTitle} />
-                      </div>
+        <div className={`col-span-4 md:col-span-3 safe-area flex items-center justify-center w-full scale-[1] md:scale-[.85]`}>
+          <div className={`w-[400px] md:w-[800px] aspect-square overflow-hidden relative shadow-2xl flex flex-col items-center justify-center bg-white renderthis` } ref={elementRef}>
+            
+            {previewURL && (
+              <div className='cursor-grab bottom-0 absolute z-50' >
+                <motion.div className="" ref={constraintsRef} />
+                <motion.img src={previewURL} alt="Preview" className={`scale-${sliderValueScale}  translate-x-${sliderValueTranslateX} w-[400px]`}  drag dragConstraints={constraintsRef}/>
+              </div>
+            )}
+
+            {isCheckedTitle ? ( 
+              <div className='absolute z-50'>
+                <img className='w-[400px] md:w-[800px] aspect-square' src='/twibbon/layer/1YearOfExcellence-2.png' />
+              </div>
+            ) : null}
+
+            {isCheckedTitle ? ( 
+            <div className='absolute z-[999]'>
+              <div className='w-[400px] md:w-[800px] aspect-square'>
+                <div className='flex flex-col items-center w-full justify-center text-center mt-16'>
+                  <LogoWhiteXs />
+                  <div className='flex flex-col items-center mt-2 gap-2'>
+                    <p className='cookie text-[86px] leading-[86px] font-bold text-[#e4ba35] neon '>
+                      <HtmlRenderer html={inputEventDescTitle} />
+                    </p>
+                    <div className='yellowtail text-[32px] leading-[32px] text-white'>
+                      <HtmlRenderer html={inputEventDescSubTitle} />
                     </div>
                   </div>
                 </div>
               </div>
-              ) : null}
-
-              {isCheckedTitle ? ( 
-              <div className='absolute bottom-[100px] z-[999]'>
-                <svg width="400" height="150" viewBox="0 0 400 150">
-                  <defs>
-                    <path id="curvePath" d="M 10,70 Q 200,5 390,70" fill="transparent" />
-                  </defs>
-                  <text
-                    fill="#b22623"
-                    fontSize={sliderValueFontSize}
-                    fontWeight="bold"
-                    className="leaguespartan"
-                  >
-                    <textPath href="#curvePath" startOffset="50%" textAnchor="middle">
-                      {cleanText}
-                    </textPath>
-                  </text>
-                </svg>
-              </div>
-              ) : null}
-
-              {isCheckedTitle ? ( 
-              <div className='absolute bottom-[100px] z-[999]'>
-                <div className='poppins text-[26.7px] leading-[26px] font-semibold text-[#e4ba35] neon'>
-                    <HtmlRenderer html={inputPersonPosition} />
-                </div>
-              </div>
-              ) : null}
-
-              {isCheckedTitle ? ( 
-              <div className='absolute top-[720px] z-[999] text-center' style={{ width: `${sliderValueQuoteWidth}px` }}>
-                <div className='leaguespartan text-[17.7px] leading-[18px] font-light text-white'>
-                    <HtmlRenderer html={inputPersonCaption} />
-                </div>
-              </div>
-              ) : null}
-              
             </div>
-          </div>
-          {previewURL && (
-          <div className='col-span-4 md:col-span-1 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl h-fit mt-0 md:mt-16 w-full -translate-y-[12vh]'>
-            <div className='flex flex-col gap-y-2 justify-between h-full'>
-              <div className='flex flex-col gap-y-3'>
-                <h1 className='font-semibold text-xl mb-4'>Customize</h1>
-                <label className="inline-flex items-center cursor-pointer mb-1">
-                  <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
-                  <div id='StepName' className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Twibbon Layer</span>
-                </label>
-                <p className='text-xs opacity-70 font-light'>Untuk mengatur posisi foto anda silahkan switch off dulu</p>
-                <Tabs defaultValue="event" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="event">Event</TabsTrigger>
-                    <TabsTrigger value="person">Person</TabsTrigger>
-                    <TabsTrigger value="desc">Desc</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="event">
-                    <div className='flex flex-col gap-4'>
-                      <ReactQuill
-                        theme="snow"
-                        value={inputEventDescTitle}
-                        onChange={handleInputChangeEventDescTitle}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
-                      />
-                      <ReactQuill
-                        theme="snow"
-                        value={inputEventDescSubTitle}
-                        onChange={handleInputChangeEventDescSubTitle}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
-                      />
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="person">
-                    <div className='flex flex-col gap-4'>
-                      <ReactQuill
-                        theme="snow"
-                        value={inputPersonName}
-                        onChange={handleInputChangePersonName}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
-                      />
-                      <div className='flex flex-col gap-1'>
-                        <p className='text-sm'>Font Size ({sliderValueFontSize}px)</p>
-                        <input type="range" min={20} max={50} value={sliderValueFontSize} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeFontSize} />
-                      </div>
-                      <ReactQuill
-                        theme="snow"
-                        value={inputPersonPosition}
-                        onChange={handleInputChangePersonPosition}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
-                      />
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="desc">
-                    <div className='flex flex-col gap-4'>
-                      <ReactQuill
-                        theme="snow"
-                        value={inputPersonCaption}
-                        onChange={handleInputChangePersonCaption}
-                        modules={{ toolbar: fullToolbarOptions }}
-                        className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
-                      />
-                      <div className='flex flex-col gap-1'>
-                        <p className='text-sm'>Width Size ({sliderValueQuoteWidth}px)</p>
-                        <input type="range" min={200} max={600} value={sliderValueQuoteWidth} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeQuoteWidth} />
-                      </div>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-                <div className='flex flex-col gap-1'>
-                  <p className='text-sm'>Zoom ({sliderValueScale})</p>
-                  <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
-                  <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu</p>
-                </div>
-              </div>
-              <div className='flex gap-2 w-full pt-12'>
-                <Button variant='outline' className='w-full' onClick={handleReset} > <RotateCcw className='w-4 h-4 mr-2' /> Reset</Button>
-                <Button className='w-full' onClick={htmlToImageConvert}> <Download className='w-4 h-4 mr-2' /> Download</Button>
+            ) : null}
+
+            {isCheckedTitle ? ( 
+            <div className='absolute bottom-[100px] z-[999]'>
+              <svg width="400" height="150" viewBox="0 0 400 150">
+                <defs>
+                  <path id="curvePath" d="M 10,70 Q 200,5 390,70" fill="transparent" />
+                </defs>
+                <text
+                  fill="#b22623"
+                  fontSize={sliderValueFontSize}
+                  fontWeight="bold"
+                  className="leaguespartan"
+                >
+                  <textPath href="#curvePath" startOffset="50%" textAnchor="middle">
+                    {cleanText}
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+            ) : null}
+
+            {isCheckedTitle ? ( 
+            <div className='absolute bottom-[100px] z-[999]'>
+              <div className='poppins text-[26.7px] leading-[26px] font-semibold text-[#e4ba35] neon'>
+                  <HtmlRenderer html={inputPersonPosition} />
               </div>
             </div>
+            ) : null}
+
+            {isCheckedTitle ? ( 
+            <div className='absolute top-[720px] z-[999] text-center' style={{ width: `${sliderValueQuoteWidth}px` }}>
+              <div className='leaguespartan text-[17.7px] leading-[18px] font-light text-white'>
+                  <HtmlRenderer html={inputPersonCaption} />
+              </div>
+            </div>
+            ) : null}
+            
           </div>
-          )}
         </div>
+        {/* {previewURL && (
+        <div className='col-span-4 md:col-span-1 bg-stone-50 dark:bg-stone-900 shadow-xl border p-6 rounded-2xl h-fit mt-0 md:mt-16 w-full -translate-y-[12vh]'>
+          <div className='flex flex-col gap-y-2 justify-between h-full'>
+            <div className='flex flex-col gap-y-3'>
+              <h1 className='font-semibold text-xl mb-4'>Customize</h1>
+              <label className="inline-flex items-center cursor-pointer mb-1">
+                <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
+                <div id='StepName' className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Twibbon Layer</span>
+              </label>
+              <p className='text-xs opacity-70 font-light'>Untuk mengatur posisi foto anda silahkan switch off dulu</p>
+              <Tabs defaultValue="event" className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="event">Event</TabsTrigger>
+                  <TabsTrigger value="person">Person</TabsTrigger>
+                  <TabsTrigger value="desc">Desc</TabsTrigger>
+                </TabsList>
+                <TabsContent value="event">
+                  <div className='flex flex-col gap-4'>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputEventDescTitle}
+                      onChange={handleInputChangeEventDescTitle}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                    />
+                    <ReactQuill
+                      theme="snow"
+                      value={inputEventDescSubTitle}
+                      onChange={handleInputChangeEventDescSubTitle}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                    />
+                  </div>
+                </TabsContent>
+                <TabsContent value="person">
+                  <div className='flex flex-col gap-4'>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputPersonName}
+                      onChange={handleInputChangePersonName}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                    />
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Font Size ({sliderValueFontSize}px)</p>
+                      <input type="range" min={20} max={50} value={sliderValueFontSize} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeFontSize} />
+                    </div>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputPersonPosition}
+                      onChange={handleInputChangePersonPosition}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                    />
+                  </div>
+                </TabsContent>
+                <TabsContent value="desc">
+                  <div className='flex flex-col gap-4'>
+                    <ReactQuill
+                      theme="snow"
+                      value={inputPersonCaption}
+                      onChange={handleInputChangePersonCaption}
+                      modules={{ toolbar: fullToolbarOptions }}
+                      className='quill-editor rounded-xl bg-white h-[100px] overflow-y-scroll'
+                    />
+                    <div className='flex flex-col gap-1'>
+                      <p className='text-sm'>Width Size ({sliderValueQuoteWidth}px)</p>
+                      <input type="range" min={200} max={600} value={sliderValueQuoteWidth} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeQuoteWidth} />
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
+              <div className='flex flex-col gap-1'>
+                <p className='text-sm'>Zoom ({sliderValueScale})</p>
+                <input type="range" min={1} max={30} value={sliderValueScale} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeScale} />
+                <p className='text-xs opacity-70'>Jika gambar tidak bisa digeser maka zoom dulu</p>
+              </div>
+            </div>
+            <div className='flex gap-2 w-full pt-12'>
+              <Button variant='outline' className='w-full' onClick={handleReset} > <RotateCcw className='w-4 h-4 mr-2' /> Reset</Button>
+              <Button className='w-full' onClick={htmlToImageConvert}> <Download className='w-4 h-4 mr-2' /> Download</Button>
+            </div>
+          </div>
+        </div>
+        )} */}
       </div>
       )}
       {previewURL && (
