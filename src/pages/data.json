@@ -108,6 +108,24 @@
             "projectname" : "Style Eighteen",
             "type" : "Post",
             "src" : "/post/styleeighteenthumbnail.webp"
+        },{
+            "id" : "17",
+            "link" : "post/style-nineteen/",
+            "projectname" : "Style Nineteen",
+            "type" : "Post",
+            "src" : "/post/stylenineteenthumbnail.webp"
+        },{
+            "id" : "18",
+            "link" : "post/style-twenty/",
+            "projectname" : "Style Twenty",
+            "type" : "Post",
+            "src" : "/post/styletwentythumbnail.webp"
+        },{
+            "id" : "18",
+            "link" : "post/style-twentyone/",
+            "projectname" : "Style Twenty One",
+            "type" : "Post",
+            "src" : "/post/styletwentyonethumbnail.webp"
         }
     ],"ReelProjects": [
         {

@@ -292,13 +292,13 @@ function TibbonStyleThree() {
                       <p className='text-sm'>Font Size ({sliderValueFontSize}px)</p>
                       <input type="range" min={40} max={100} value={sliderValueFontSize} className="range w-full cursor-grabbing accent-black" step={1} onChange={handleSliderChangeFontSize} />
                     </div>
-                    <ReactQuill
+                    {/* <ReactQuill
                       theme="snow"
                       value={inputPersonPosition}
                       onChange={handleInputChangePersonPosition}
                       modules={{ toolbar: fullToolbarOptions }}
                       className='quill-editor rounded-xl bg-white h-[150px] overflow-y-scroll'
-                    />
+                    /> */}
                 </div>
               </MenubarContent>
             </MenubarMenu>

@@ -39,6 +39,9 @@ import TwibbonStyleOne from './layout/twibbon/TibbonStyleOne';
 import TwibbonStyleTwo from './layout/twibbon/TibbonStyleTwo';
 import TwibbonStyleThree from './layout/twibbon/TibbonStyleThree';
 import PostStyleEighteen from './layout/posts/PostStyleEighteen';
+import PostStyleNineteen from './layout/posts/PostStyleNineteen';
+import PostStyleTwenty from './layout/posts/PostStyleTwenty';
+import PostStyleTwentyOne from './layout/posts/PostStyleTwentyOne';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
@@ -226,6 +229,30 @@ export default function RouterPage() {
               element={
                 <ProtectedRoute>
                   <PostStyleEighteen />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-nineteen'
+              element={
+                <ProtectedRoute>
+                  <PostStyleNineteen />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-twenty'
+              element={
+                <ProtectedRoute>
+                  <PostStyleTwenty />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-twentyone'
+              element={
+                <ProtectedRoute>
+                  <PostStyleTwentyOne />
                 </ProtectedRoute>
               }
             />
