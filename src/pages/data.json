@@ -126,6 +126,24 @@
             "projectname" : "Style Twenty One",
             "type" : "Post",
             "src" : "/post/styletwentyonethumbnail.webp"
+        },{
+            "id" : "19",
+            "link" : "post/style-twentytwo/",
+            "projectname" : "Style Twenty Two",
+            "type" : "Post",
+            "src" : "/post/styletwentytwothumbnail.webp"
+        },{
+            "id" : "20",
+            "link" : "post/style-twentythree/",
+            "projectname" : "Style Twenty Three",
+            "type" : "Post",
+            "src" : "/post/styletwentythreethumbnail.webp"
+        },{
+            "id" : "21",
+            "link" : "post/style-twentyfour/",
+            "projectname" : "Style Twenty Four",
+            "type" : "Post",
+            "src" : "/post/styletwentyfourthumbnail.webp"
         }
     ],"ReelProjects": [
         {

@@ -20,6 +20,8 @@ import {
 import { motion, useMotionValue } from "framer-motion";
 import { Walktour } from 'walktour'
 import LogoWhite from '../utils/LogoWhite';
+import LogoRed from '../utils/LogoRed';
+import LogoBlack from '../utils/LogoBlack';
 import TypefaceTitle from '../utils/TypefaceTitle';
 import UploadAnimation from '../utils/UploadAnimation';
 import {
@@ -37,9 +39,8 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar"
-import LogoRed from '../utils/LogoRed';
 
-function PostStyleTwentyOne() {
+function PostStyleTwentyFour() {
   const [image, setImage] = useState(null);
   const [previewURL, setPreviewURL] = useState('');
   const elementRef = useRef(null);
@@ -55,7 +56,7 @@ function PostStyleTwentyOne() {
   const constraintsRef = useRef(null);
   const [isCheckedCopyright, setIsCheckedCopyright] = useState(true);
   const [inputEventDescCopyright, setInputEventDescCopyright] = useState('Google | Pinterest : ');
-
+  
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -143,7 +144,7 @@ function PostStyleTwentyOne() {
   const handleInputChangeEventCopyright = (value) => {
     setInputEventDescCopyright(value);
   };
-  
+
   const HtmlRenderer = ({ html }) => {
     const parsedHtml = parse(html, {
       replace: (domNode) => {
@@ -173,7 +174,7 @@ function PostStyleTwentyOne() {
 
   const xTitle = useMotionValue(0);
   const yTitle = useMotionValue(0);
-  const [widthTitle, setWidthTitle] = useState(400);
+  const [widthTitle, setWidthTitle] = useState(1000);
   const [dragEnabledTitle, setDragEnabledTitle] = useState(true); // Track drag state
   const isResizingTitle = useRef(false);
 
@@ -196,7 +197,7 @@ function PostStyleTwentyOne() {
 
   const xSubTitle = useMotionValue(0);
   const ySubTitle = useMotionValue(0);
-  const [widthSubTitle, setWidthSubTitle] = useState(400);
+  const [widthSubTitle, setWidthSubTitle] = useState(1000);
   const [dragEnabledSubTitle, setDragEnabledSubTitle] = useState(true); // Track drag state
   const isResizingSubTitle = useRef(false);
 
@@ -356,24 +357,24 @@ function PostStyleTwentyOne() {
         </div>
 
         <div className={`safe-area flex items-center justify-center w-full scale-[.7] -translate-y-[20vh]`}>
-          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center renderthis bg-stone-100` } ref={elementRef}>
+          <div className={`w-[1200px] h-[1500px] overflow-hidden relative shadow-2xl flex flex-col items-center justify-center renderthis bg-black` } ref={elementRef}>
             {previewURL && (
-              <div className='cursor-grab top-0' id='StepName'>
+              <div className='cursor-grab bottom-0' id='StepName'>
                 <motion.div className="" ref={constraintsRef} />
-                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 left-0 scale-${sliderValueScale}`}  drag dragConstraints={constraintsRef}/>
+                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 max-w-[80%] max-h-[80%] object-cover left-0 scale-${sliderValueScale}`}  drag dragConstraints={constraintsRef}/>
               </div>
             )}
             
 
             {isCheckedOverlay && (
               <div className='absolute top-10 left-20 z-50'>
-                <LogoRed />
+                <LogoWhite />
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 h-[1000px] grid place-items-center -translate-x-[250px]'>
-                <div className='flex flex-col items-center justify-center text-left gap-5 htmlrender-detail bg-[#E74C3C] w-full  p-12'>
+              <div className='z-50 pb-6 absolute top-[300px] w-[1040px]'>
+                <div className='flex flex-col text-left gap-5 htmlrender-detail'>
                   <div
                       onMouseMove={handleMouseMoveTitle}
                       onMouseUp={handleMouseUpTitle}
@@ -385,7 +386,7 @@ function PostStyleTwentyOne() {
                       style={{ x: xTitle, y: yTitle, width: widthTitle }}
                     >
                       <div className="cursor-move select-none">
-                        <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                        <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`}  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                       </div>
 
                       {/* Resize Handle */}
@@ -418,8 +419,15 @@ function PostStyleTwentyOne() {
                     </motion.div>
                   </div>
 
-                  {/* <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1> */}
-                  {/* <p className={`text-white w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p> */}
+                  {/* <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`}  id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
+                  <p className={`text-white w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p> */}
+                </div>
+              </div>
+            )}
+
+            {isCheckedOverlay && (
+              <div className='absolute top-[680px] right-[110px] z-50'>
+                <div className='h-[60px] bg-[#E74B3C] w-[900px]'>
                 </div>
               </div>
             )}
@@ -431,12 +439,6 @@ function PostStyleTwentyOne() {
                 </div>
               </div>
             )}
-
-            {/* {isCheckedOverlay && (
-              <div className='absolute top-0 left-0 h-[1000px] w-full'>
-                <div className='bg-gradient-to-b from-[#E74C3C] to-[#E74C3C] opacity-80 h-full'></div>
-              </div>
-            )} */}
             
           </div>
         </div>
@@ -461,7 +463,7 @@ function PostStyleTwentyOne() {
                 </TabsList>
                 <TabsContent value="title">
                   <div className='flex flex-col gap-1'>
-                    <div className="flex items-center justify-between mb-2">
+                   <div className="flex items-center justify-between mb-2">
                         <label className="inline-flex items-center cursor-pointer mb-1">
                           <input type="checkbox" value="" className="sr-only peer"  checked={isCheckedTitle} onChange={() => setIsCheckedTitle(!isCheckedTitle)} />
                           <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
@@ -556,4 +558,4 @@ function PostStyleTwentyOne() {
   );
 }
 
-export default PostStyleTwentyOne;
+export default PostStyleTwentyFour;

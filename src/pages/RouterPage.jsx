@@ -42,6 +42,9 @@ import PostStyleEighteen from './layout/posts/PostStyleEighteen';
 import PostStyleNineteen from './layout/posts/PostStyleNineteen';
 import PostStyleTwenty from './layout/posts/PostStyleTwenty';
 import PostStyleTwentyOne from './layout/posts/PostStyleTwentyOne';
+import PostStyleTwentyTwo from './layout/posts/PostStyleTwentyTwo';
+import PostStyleTwentyThree from './layout/posts/PostStyleTwentyThree';
+import PostStyleTwentyFour from './layout/posts/PostStyleTwentyFour';
 
 export default function RouterPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
@@ -253,6 +256,30 @@ export default function RouterPage() {
               element={
                 <ProtectedRoute>
                   <PostStyleTwentyOne />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-twentytwo'
+              element={
+                <ProtectedRoute>
+                  <PostStyleTwentyTwo />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-twentythree'
+              element={
+                <ProtectedRoute>
+                  <PostStyleTwentyThree />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/post/style-twentyfour'
+              element={
+                <ProtectedRoute>
+                  <PostStyleTwentyFour />
                 </ProtectedRoute>
               }
             />

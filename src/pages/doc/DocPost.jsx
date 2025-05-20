@@ -14,7 +14,7 @@ import {
     {
         atribute: "Dimensi",
         komponen: "Panjang * Lebar",
-        value: "1080x1080"
+        value: "4:5"
     },{
       atribute: "Typeface/Font",
       komponen: "Albert Sans",

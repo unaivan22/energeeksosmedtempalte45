@@ -38,8 +38,9 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 import LogoRed from '../utils/LogoRed';
+import LogoBlack from '../utils/LogoBlack';
 
-function PostStyleTwentyOne() {
+function PostStyleTwentyTwo() {
   const [image, setImage] = useState(null);
   const [previewURL, setPreviewURL] = useState('');
   const elementRef = useRef(null);
@@ -360,66 +361,68 @@ function PostStyleTwentyOne() {
             {previewURL && (
               <div className='cursor-grab top-0' id='StepName'>
                 <motion.div className="" ref={constraintsRef} />
-                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 left-0 scale-${sliderValueScale}`}  drag dragConstraints={constraintsRef}/>
+                <motion.img src={previewURL} alt="Preview" className={`absolute bottom-0 left-0 scale-${sliderValueScale} grayscale`}  drag dragConstraints={constraintsRef}/>
               </div>
             )}
             
 
             {isCheckedOverlay && (
               <div className='absolute top-10 left-20 z-50'>
-                <LogoRed />
+                <LogoBlack />
               </div>
             )}
 
             {isCheckedOverlay && (
-              <div className='z-50 pb-6 h-[1000px] grid place-items-center -translate-x-[250px]'>
-                <div className='flex flex-col items-center justify-center text-left gap-5 htmlrender-detail bg-[#E74C3C] w-full  p-12'>
-                  <div
-                      onMouseMove={handleMouseMoveTitle}
-                      onMouseUp={handleMouseUpTitle}
-                      onMouseLeave={handleMouseUpTitle}
-                    >
-                    <motion.div
-                      drag={dragEnabledTitle} // Dynamically enable or disable drag
-                      dragMomentum={false}
-                      style={{ x: xTitle, y: yTitle, width: widthTitle }}
-                    >
-                      <div className="cursor-move select-none">
-                        <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
-                      </div>
+              <div className='z-50 pb-6 w-[250px] grid place-items-center -translate-x-[80px] -translate-y-[60px]'>
+                <div className='flex flex-col items-center justify-center text-left gap-5 htmlrender-detail bg-[#E74C3C] h-[1000px] opacity-80 w-full  p-12'>
+                </div>
+              </div>
+            )}
 
-                      {/* Resize Handle */}
-                      <div
-                        onMouseDown={handleMouseDownTitle}
-                        className="absolute right-0 top-0 h-full w-2 cursor-ew-resize bg-blue-400 opacity-0"
-                      />
-                    </motion.div>
+            {isCheckedOverlay && (
+              <div className='z-50 absolute right-[100px] -translate-y-[100px]'>
+                <div
+                    onMouseMove={handleMouseMoveTitle}
+                    onMouseUp={handleMouseUpTitle}
+                    onMouseLeave={handleMouseUpTitle}
+                  >
+                  <motion.div
+                    drag={dragEnabledTitle} // Dynamically enable or disable drag
+                    dragMomentum={false}
+                    style={{ x: xTitle, y: yTitle, width: widthTitle }}
+                  >
+                    <div className="cursor-move select-none">
+                      <h1 className={`text-black w-full font-bold font-size-${sliderEventDescTitle}`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1>
                     </div>
 
+                    {/* Resize Handle */}
                     <div
-                      onMouseMove={handleMouseMoveSubTitle}
-                      onMouseUp={handleMouseUpSubTitle}
-                      onMouseLeave={handleMouseUpSubTitle}
-                    >
-                    <motion.div
-                      drag={dragEnabledSubTitle} // Dynamically enable or disable drag
-                      dragMomentum={false}
-                      style={{ x: xSubTitle, y: ySubTitle, width: widthSubTitle }}
-                    >
-                      <div className="cursor-move select-none">
-                        <p className={`text-white w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
-                      </div>
+                      onMouseDown={handleMouseDownTitle}
+                      className="absolute right-0 top-0 h-full w-2 cursor-ew-resize bg-blue-400 opacity-0"
+                    />
+                  </motion.div>
+                </div>
 
-                      {/* Resize Handle */}
-                      <div
-                        onMouseDown={handleMouseDownSubTitle}
-                        className="absolute right-0 top-0 h-full w-2 cursor-ew-resize bg-blue-400 opacity-0"
-                      />
-                    </motion.div>
-                  </div>
+                <div
+                    onMouseMove={handleMouseMoveSubTitle}
+                    onMouseUp={handleMouseUpSubTitle}
+                    onMouseLeave={handleMouseUpSubTitle}
+                  >
+                  <motion.div
+                    drag={dragEnabledSubTitle} // Dynamically enable or disable drag
+                    dragMomentum={false}
+                    style={{ x: xSubTitle, y: ySubTitle, width: widthSubTitle }}
+                  >
+                    <div className="cursor-move select-none">
+                      <p className={`text-black w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p>
+                    </div>
 
-                  {/* <h1 className={`text-white w-full font-bold font-size-${sliderEventDescTitle}`} id='title'>{isCheckedTitle ? ( <div><HtmlRenderer html={inputEventDescTitle} /></div> ) : null} </h1> */}
-                  {/* <p className={`text-white w-full font-size-${sliderEventDescSubTitle}`}>{isCheckedSubTitle ? ( <div><HtmlRenderer html={inputEventDescSubTitle} /></div> ) : null}</p> */}
+                    {/* Resize Handle */}
+                    <div
+                      onMouseDown={handleMouseDownSubTitle}
+                      className="absolute right-0 top-0 h-full w-2 cursor-ew-resize bg-blue-400 opacity-0"
+                    />
+                  </motion.div>
                 </div>
               </div>
             )}
@@ -556,4 +559,4 @@ function PostStyleTwentyOne() {
   );
 }
 
-export default PostStyleTwentyOne;
+export default PostStyleTwentyTwo;
